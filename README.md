@@ -8,6 +8,6 @@ Kalian bisa menggunakannya!!!  Mau mencoba?
 
 Jika berinisiatif untuk mengunduh ayo bantu saya biar bisa lebih giat menghibur orang orang dengan konten yang saya buat
 
-
+YouTube:
 
 https://www.youtube.com/@linggachannel4781
