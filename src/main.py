@@ -115,7 +115,7 @@ try:
 # HASH
     try:
         param = zipfile.ZipFile(f)
-    except zipfile.BadZipFile:  print(borange+' ['+reset+banmerah+'!'+reset+borange+'] '+merah+'Terdeteksi bukan file zip atau anda salah memasukkan path. Koreksi penulisan path'+reset);sys.exit()
+    except (FileNotFoundError, zipfile.BadZipFile):  print(borange+' ['+reset+banmerah+'!'+reset+borange+'] '+merah+'Terdeteksi bukan file zip atau anda salah memasukkan path. Koreksi penulisan path'+reset);sys.exit()
     if tebak is None:
         print(borange+' ['+reset+banmerah+'!'+reset+borange+'] '+merah+' Perhatikan penulisan path wordlist'+reset);sys.exit()
     j = len(list(open(tebak, 'rb')))
