@@ -67,8 +67,8 @@ try:
 >==========================================================<
  | """+reset+putih+"""            Riddles - Zip File Cracker!!      """+borange+"""         |
 <+========================================================+>
- | """+reset+hijau+"""Creator:   """+putih+""" Sreetx  """+borange+"""                                   |
- | """+reset+hijau+"""Language:  """+putih+""" Python3  """+borange+"""                                  |
+ |"""+reset+hijau+""" Creator:   """+putih+""" Sreetx  """+borange+"""                                   |
+ |"""+reset+hijau+""" Language:  """+putih+""" Python3  """+borange+"""                                  |
  |"""+reset+hijau+""" Version:   """+putih+""" 0.0.2  """+borange+"""                                    |
  |"""+reset+hijau+""" Github:   """+putih+"""  https://github.com/Sreetx   """+borange+"""               |
  |"""+reset+hijau+""" YouTube: """+putih+"""   https://www.youtube.com/@linggachannel4781 """+borange+"""|
@@ -129,5 +129,5 @@ try:
             except (RuntimeError, zipfile.BadZipFile, zipfile.LargeZipFile): continue
             else:
                print('Wordlist Habis')
-except (KeyboardInterrupt, EOFError): print(merah+'\n [!] CTRL+C Terdeteksi, keluar dari program....'+norml);sys.exit()
+except (KeyboardInterrupt, EOFError): print(merah+'\n [!] CTRL+C Terdeteksi, keluar dari program....'+reset);sys.exit()
                 
