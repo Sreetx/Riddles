@@ -18,7 +18,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 try:
     try:
-        import sys, os, time
+        import sys, os, time, optparse, webbrowser
         from color.warna import orange
         from color.warna import putih
         from color.warna import merah
@@ -42,6 +42,7 @@ try:
     os.system('cls || clear')
     try:
         import zipfile
+        import rarfile
         from tqdm import tqdm
         import datetime
         import socket
@@ -49,41 +50,42 @@ try:
         print(putih+' ['+banmerah+'!'+reset+putih+']'+borangekelip+' Module tidak lengkap'+reset)
         print(putih+' ['+banmerah+'!'+reset+putih+']'+reset+orange+' Module akan segera diinstall'+reset);time.sleep(1)
         if sys.platform in ['win32', 'win64']:
-            os.system('pip install zipfile')
+            os.system('pip install rarfile')
             os.system('pip install tqdm')
             sys.exit()
         if sys.platform in ['linux', 'linux2']:
-            os.system('pip install zipfile')
+            os.system('pip install rarfile')
             os.system('pip install tqdm')
-            enter = input(borange+' [*] Jika modul terpasang dengan baik tekan CTR+C, mulai Ulang script'+reset)
-            os.system('apt install python3-zipfile')
+            print(borange+' [*] Jika modul terpasang dengan baik tekan CTR+C, mulai Ulang script'+reset)
+            enter = print(borange+" [*] Jika ada masalah dengan pip tekan enter untuk menginstall nya (for Debian and derivative users)"+reset)
+            os.system('apt install python3-rarfile')
             os.system('apt install python3-tqdm')
             sys.exit()
         else: pass
 except KeyboardInterrupt: print(bputih+' ['+banmerah+'!'+reset+bputih+']'+reset+merah+' Canceled by USER!'+reset);sys.exit()
 
-try:
-    banner = borange+"""
+banner = borange+"""
 >==========================================================<
- | """+reset+putih+"""            Riddles - Zip File Cracker!!      """+borange+"""         |
+ | """+reset+putih+"""           Riddles - Archive File Cracker!!      """+borange+"""      |
 <+========================================================+>
  |"""+reset+hijau+""" Creator:   """+putih+""" Sreetx  """+borange+"""                                   |
  |"""+reset+hijau+""" Language:  """+putih+""" Python3  """+borange+"""                                  |
- |"""+reset+hijau+""" Version:   """+putih+""" 0.0.2  """+borange+"""                                    |
+ |"""+reset+hijau+""" Version:   """+putih+""" 0.0.5  """+borange+"""                                    |
  |"""+reset+hijau+""" Github:   """+putih+"""  https://github.com/Sreetx   """+borange+"""               |
  |"""+reset+hijau+""" YouTube: """+putih+"""   https://www.youtube.com/@linggachannel4781 """+borange+"""|
- >========================================================<"""+reset
-    print(banner)
-    f = input(kelabu+'\n ['+banhijau+'?'+reset+kelabu+'] Masukkan lokasi file zip anda: '+reset)
-    tebak = input(kelabu+' ['+banhijau+'?'+reset+kelabu+'] Masukkan lokasi file wordlist anda: '+reset)
-    print(putih+' \n['+banorange+'INFO'+reset+putih+'] '+orange+'Jika proses penebakan berhenti, itu artinya script menemukan kata yang tepat dan script mencoba untuk mengekstrak file tersebut'+reset)
-    print(putih+'['+banorange+'INFO'+reset+putih+'] '+orange+'Ekstraksi akan segera dilakukan setelah password ditemukan\n'+reset)
-    def hasil(p):
-        hpst = socket.gethostname()
-        date = datetime.datetime.now()
-        timestamp = date.strftime("%Y%m%d_%H%M%S")
-        logs = f"logs/succed_{timestamp}.txt"
-        filed = """#LOG FILE
+ >========================================================<"""+reset+bputih+"""
+
+ [*] File wordlist bawaan ada di "word/wordlist.txt di script ini!"""+reset
+ 
+            
+def zips():
+    try:
+        def hasil(p):
+            hpst = socket.gethostname()
+            date = datetime.datetime.now()
+            timestamp = date.strftime("%Y%m%d_%H%M%S")
+            logs = f"logs/succed_{timestamp}.txt"
+            filed = """#LOG FILE
 #PASSWORD FOUND
 
 # Time: """+timestamp+"""
@@ -95,7 +97,7 @@ try:
 #################################
 # Support Me!! IN YOUTUBE
 """
-        print(reset+borange+"""
+            print(reset+borange+"""
 <=======================================>
  |"""+reset+putih+"""             Password Found    """+borange+"""       |
  >======================================<
@@ -103,31 +105,148 @@ try:
  |"""+reset+""" Zip Directory: """+hijau+f+borange+"""
  |"""+reset+""" Password: """, banhijau+p.decode().strip()+reset+borange+"""
  |"""+reset+""" Wordlist Directory: """+hijau+tebak+borange+"""
- |"""+reset+""" Log: """+hijau+"""~/log/succed_"""+timestamp+reset+borange+"""
+ |"""+reset+""" Log: """+hijau+"""~/logs/succed_"""+timestamp+reset+borange+"""
  |"""+reset+""" System: """+hijau+hpst+borange+"""
 <=======================================>"""+reset+orange+"""
  [*] File sudah di ekstraksi dan disimpan di forder "hasil" di script ini
  [*] Terima Kasih karena telah menggunakan script ini"""+reset)
-        bite = filed.encode('utf-8')
-        with open(logs, 'wb') as fd:
-            fd.write(bite)
-        sys.exit()
+            bite = filed.encode('utf-8')
+            with open(logs, 'wb') as fd:
+                fd.write(bite)
+            sys.exit()
+            os.system("cls||clear")
+        
+    #ZIP
+        print(banner)
+        print(kelabu+"\n ["+banorange+"ZIP"+reset+kelabu+"] Anda masuk dalam mode ekstraksi ZIP"+reset)
+        f = input(kelabu+' ['+banhijau+'?'+reset+kelabu+'] Masukkan lokasi file zip anda: '+reset)
+        tebak = input(kelabu+' ['+banhijau+'?'+reset+kelabu+'] Masukkan lokasi file wordlist anda: '+reset)
+        print(putih+' \n['+banorange+'INFO'+reset+putih+'] '+orange+'Jika proses penebakan berhenti, itu artinya script menemukan kata yang tepat dan script mencoba untuk mengekstrak file tersebut'+reset)
+        print(putih+'['+banorange+'INFO'+reset+putih+'] '+orange+'Ekstraksi akan segera dilakukan setelah password ditemukan\n'+reset)
+      
 # HASH
-    try:
-        param = zipfile.ZipFile(f)
-    except (FileNotFoundError, zipfile.BadZipFile):  print(borange+' ['+reset+banmerah+'!'+reset+borange+'] '+merah+'Terdeteksi bukan file zip atau anda salah memasukkan path. Koreksi penulisan path'+reset);sys.exit()
-    if tebak is None:
-        print(borange+' ['+reset+banmerah+'!'+reset+borange+'] '+merah+' Perhatikan penulisan path wordlist'+reset);sys.exit()
-    j = len(list(open(tebak, 'rb')))
-    print(kelabu+' ['+banhijau+'*'+reset+kelabu+'] Jumlah kata yang akan dicek:'+hijau, j)
-    with zipfile.ZipFile(f) as z, open(tebak, 'rb') as p:
-        for p in tqdm(p, total=j, unit='word'):
-            try:
-                z.extractall('hasil',pwd=p.strip())
-                hasil(p)
-            except KeyboardInterrupt: print(kelabu+' ['+banmerah+'!'+reset+kelabu+'] '+merah+' Dibatalkan!'+reset);sys.exit()
-            except (RuntimeError, zipfile.BadZipFile, zipfile.LargeZipFile): continue
-            else:
-               print('Wordlist Habis')
-except (KeyboardInterrupt, EOFError): print(merah+'\n [!] CTRL+C Terdeteksi, keluar dari program....'+reset);sys.exit()
+        try:
+            param = zipfile.ZipFile(f)
+        except (FileNotFoundError, zipfile.BadZipFile): print(borange+'\n ['+reset+banmerah+'!'+reset+borange+'] '+merah+'Terdeteksi bukan file zip atau anda salah memasukkan path. Koreksi penulisan path'+reset);sys.exit()
+        if tebak is None:
+            print(borange+' ['+reset+banmerah+'!'+reset+borange+'] '+merah+' Perhatikan penulisan path wordlist'+reset);sys.exit()
+        j = len(list(open(tebak, 'rb')))
+        print(kelabu+' ['+banhijau+'*'+reset+kelabu+'] Jumlah kata yang akan dicek:'+hijau, j)
+        with zipfile.ZipFile(f) as z, open(tebak, 'rb') as p:
+            for p in tqdm(p, total=j, unit='word'):
+                try:
+                    z.extractall('hasil', pwd=p.strip())
+                    hasil(p)
+                except KeyboardInterrupt: print(kelabu+' ['+banmerah+'!'+reset+kelabu+'] '+merah+' Dibatalkan!'+reset);sys.exit()
+                except (RuntimeError, zipfile.BadZipFile, zipfile.LargeZipFile): continue
+        print('Wordlist Habis')
+    except (KeyboardInterrupt, EOFError): print(merah+'\n [!] CTRL+C Terdeteksi, keluar dari program....'+reset);sys.exit()
                 
+def rars():
+    try:
+        def hasil(pas, r, word):
+            hpst = socket.gethostname()
+            date = datetime.datetime.now()
+            timestamp = date.strftime("%Y%m%d_%H%M%S")
+            logs = f"logs/succed_{timestamp}.txt"
+            filed = f"""#LOG FILE
+#PASSWORD FOUND
+
+# Time: {timestamp}
+# Rar File: {r.split("/")[-1]}
+# Directory: {r}
+# Password: {pas.rstrip()}
+# Device Model: {hpst}
+
+#################################
+# Support Me!! IN YOUTUBE
+"""
+            print(reset+borange+"""
+<=======================================>
+ |"""+reset+putih+"""             Password Found    """+borange+"""       |
+ >======================================<
+ |"""+reset+""" RAR File: """+hijau+r.split("/")[-1]+reset+borange+"""
+ |"""+reset+""" RAR Directory: """+hijau+r+borange+"""
+ |"""+reset+""" Password: """+banhijau+pas.decode().strip()+reset+borange+"""
+ |"""+reset+""" Wordlist Directory: """+hijau+word+borange+"""
+ |"""+reset+""" Log: """+hijau+"""~/logs/succed_"""+timestamp+reset+borange+"""
+ |"""+reset+""" System: """+hijau+hpst+borange+"""
+<=======================================>"""+reset+orange+"""
+ [*] File sudah di ekstraksi dan disimpan di forder "hasil" di script ini
+ [*] Terima Kasih karena telah menggunakan script ini"""+reset)
+            bite = filed.encode('utf-8')
+            with open(logs, 'wb') as fd:
+                fd.write(bite)
+            sys.exit()
+            
+    #RAR
+        rarfile.UNRAR_TOOL ="unrar"
+        os.system("cls||clear")
+        print(banner)
+        print(kelabu+"\n ["+banorange+"RAR"+reset+kelabu+"] Anda masuk dalam mode ekstraksi RAR"+reset)
+        r = input(kelabu+' ['+banhijau+'?'+reset+kelabu+'] Masukkan lokasi file RAR anda: '+reset)
+        word = input(kelabu+' ['+banhijau+'?'+reset+kelabu+'] Masukkan lokasi file wordlist: '+reset)
+        try:
+            ttl = len(list(open(word, "rb")))
+        except FileNotFoundError:
+            print(borange+' ['+reset+banmerah+'!'+reset+borange+'] '+merah+' Perhatikan penulisan path wordlist'+reset);sys.exit()
+        try:
+            param = rarfile.RarFile(r)
+        except (FileNotFoundError, rarfile.BadRarFile, rarfile.NotRarFile):  print(borange+'\n ['+reset+banmerah+'!'+reset+borange+'] '+merah+'Terdeteksi bukan file RAR atau anda salah memasukkan path. Koreksi penulisan path!'+reset);sys.exit()
+        print(putih+' \n['+banorange+'INFO'+reset+putih+'] '+orange+'Jika proses penebakan berhenti, itu artinya script menemukan kata yang tepat dan script mencoba untuk mengekstrak file tersebut'+reset)
+        print(putih+'['+banorange+'INFO'+reset+putih+'] '+orange+'Ekstraksi akan segera dilakukan setelah password ditemukan\n'+reset)
+        
+    # HASH RAR
+        print(kelabu+' ['+banhijau+'*'+reset+kelabu+'] Jumlah kata yang akan dicek:'+hijau, ttl)
+        with rarfile.RarFile(r) as rr, open(word, 'rb') as rarf:
+            rarf.seek(0)
+            for pas in tqdm(rarf, total=ttl, unit='word'):
+                try:
+                    rr.extractall('hasil', pwd=pas.rstrip())
+                    hasil(pas, r, word)
+                except KeyboardInterrupt:
+                    print(merah+"\n [!] Dibatalkan!"+reset)
+                    sys.exit()
+                except (RuntimeError, rarfile.BadRarFile, rarfile.PasswordRequired):
+                    continue
+                except rarfile.RarCannotExec: print(kelabu+" ["+banmerah+"!"+reset+kelabu+"] "+reset+merah+"Utilitas yang dibutuhkan rarfile tidal tersedia. Install sendiri! (7z or unrar)"+reset);sys.exit()
+
+    except (KeyboardInterrupt, EOFError): print(merah+'\n [!] CTRL+C Terdeteksi, keluar dari program....'+reset);sys.exit()
+
+def helpp():
+    print(banner)
+    print(putih+"\n[*] OPTIONS")
+    print(orange+"   --rar    "+reset+"Digunakan untuk masuk ke opsi brute force password file rar")
+    print(orange+"   --zip    "+reset+"Digunakan untuk masuk ke opsi brute force password file zip")
+    print(orange+"   --hh    "+reset+"Digunakan untuk masuk ke opsi TAMPILAN UTAMA INI")
+    print(putih+"\n[*] USAGE")
+    print(orange+"   python3 "+sys.argv[0]+" --zip")
+    print(orange+"   python3 "+sys.argv[0]+" --rar"+reset)
+    sup = input(kelabu+" ["+banhijau+"?"+reset+kelabu+"] Yuk support Kami di YouTube ["+banhijau+"y/n"+reset+kelabu+"]: "+reset)
+    if sup.lower() == "y" or sup.lower() == "Y":
+        print(kelabu+" ["+banhijau+"*"+reset+kelabu+"]"+putih+" Terima kasih karena sudah support Kami... :)"+reset)
+        webbrowser.open("https://www.youtube.com/@linggachannel4781")
+        sys.exit()
+    else: sys.exit()
+    
+def info():
+    print(kelabu+"["+banhijau+"!"+reset+kelabu+"] "+putih+" Ketikan python3 "+sys.argv[0]+" --hh Untuk info lebih lanjut(Gk bisa otomatis bjir)\n"+reset)
+menu = optparse.OptionParser(info())
+menu.add_option('--zip', dest="zipp", action='store_true', default=False)
+menu.add_option('--rar', dest="rarr", action='store_true', default=False)
+menu.add_option('--hh', dest="hh", action='store_true', default=False)
+
+(option, args) = menu.parse_args()
+rarr = option.rarr
+zipp = option.zipp
+hh = option.hh
+
+if hh:
+    os.system("cls||clear")
+    helpp()
+if zipp:
+    os.system("cls||clear")
+    zips()
+if rarr:
+    os.system("cls||clear")
+    rars()
