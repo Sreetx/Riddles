@@ -1,5 +1,9 @@
 # Riddles
 
+
+NEW UPDATE: SUPPORTED RAR FILE!!
+
+
 Alat pembobol file zip yang dapat digunakan dengan mudah
 
 Script ini menggunakan dengan metode BRUTE FORCE dengan file wordlist yang telah disediakan
