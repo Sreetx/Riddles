@@ -1,7 +1,7 @@
 # Riddles
 
-
-NEW UPDATE: SUPPORTED RAR FILE!!
+CHANGE LOG:
+NEW UPDATE(18/7/2024): SUPPORTED RAR FILE!!
 
 
 Alat pembobol file zip yang dapat digunakan dengan mudah
