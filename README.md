@@ -2,7 +2,7 @@
 
 CHANGE LOG:
 
-NEW UPDATE(18/7/2024): SUPPORTED RAR FILE!!
+    NEW UPDATE(18/7/2024): SUPPORTED RAR FILE!!
 
 
 Alat pembobol file zip yang dapat digunakan dengan mudah
@@ -17,4 +17,4 @@ Jika berinisiatif untuk mengunduh ayo bantu saya biar bisa lebih giat menghibur 
 YouTube:
 
 
-https://www.youtube.com/@linggachannel4781
+    https://www.youtube.com/@linggachannel4781
