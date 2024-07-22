@@ -7,7 +7,7 @@ CHANGE LOG:
     (18/7/2024): SUPPORTED RAR FILE!!
 
 
-Alat pembobol file zip yang dapat digunakan dengan mudah
+Alat pembobol file archive yang dapat digunakan dengan mudah
 
 Script ini menggunakan dengan metode BRUTE FORCE dengan file wordlist yang telah disediakan
 
