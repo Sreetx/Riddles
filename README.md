@@ -2,7 +2,11 @@
 
 CHANGE LOG:
 
+    0.0.6
+    
     (22/7/2024): GUESSING ALGORITHM IS SUPPORTED
+
+    0.0.5
     
     (18/7/2024): SUPPORTED RAR FILE!!
 
