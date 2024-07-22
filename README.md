@@ -1,8 +1,8 @@
 # Riddles
 
 CHANGE LOG:
-
-    NEW UPDATE(18/7/2024): SUPPORTED RAR FILE!!
+    (22/7/2024): GUESSING ALGORITHM IS SUPPORTED
+    (18/7/2024): SUPPORTED RAR FILE!!
 
 
 Alat pembobol file zip yang dapat digunakan dengan mudah
