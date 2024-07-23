@@ -101,7 +101,7 @@ def zips():
  |"""+reset+""" Log: """+hijau+"""~/logs/succed_"""+timestamp+reset+borange+"""
  |"""+reset+""" System: """+hijau+hpst+borange+"""
 <=======================================>"""+reset+orange+"""
- [*] File sudah di ekstraksi dan disimpan di forder "hasil" di script ini
+ [*] File sudah di ekstraksi dan disimpan di folder "hasil" di script ini
  [*] Terima Kasih karena telah menggunakan script ini"""+reset)
             bite = filed.encode('utf-8')
             with open(logs, 'wb') as fd:
@@ -115,9 +115,9 @@ def zips():
             with zipfile.ZipFile(f) as z:
                 for lenght in range(1, int(algoritma.total) + 1):
                     while True:
-                        p = ''.join(random.choices(algoritma.abjad, k=int(algoritma.total)))
-                        print(kelabu+"\r ["+banhijau+"INFO"+reset+kelabu+"]"+orange+" Wordlist yang dibuat: "+reset+banhijau+str(p)+reset, end='', flush=True)
                         try:
+                            p = ''.join(random.choices(algoritma.abjad, k=int(algoritma.total)))
+                            print(kelabu+"\r ["+banhijau+"INFO"+reset+kelabu+"]"+orange+" Wordlist yang dibuat: "+reset+banhijau+str(p)+reset, end='', flush=True)
                             z.extractall('hasil', pwd=p.encode('utf-8'))
                             hasil(p)
                         except (EOFError, KeyboardInterrupt): print(kelabu+'\n ['+banmerah+'!'+reset+kelabu+'] '+merah+' Dibatalkan!'+reset);sys.exit()
@@ -201,7 +201,7 @@ def rars():
  |"""+reset+""" Log: """+hijau+"""~/logs/succed_"""+timestamp+reset+borange+"""
  |"""+reset+""" System: """+hijau+hpst+borange+"""
 <=======================================>"""+reset+orange+"""
- [*] File sudah di ekstraksi dan disimpan di forder "hasil" di script ini
+ [*] File sudah di ekstraksi dan disimpan di folder "hasil" di script ini
  [*] Terima Kasih karena telah menggunakan script ini"""+reset)
             bite = filed.encode('utf-8')
             with open(logs, 'wb') as fd:
