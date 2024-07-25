@@ -22,6 +22,6 @@ if number.lower() == "1":
 if number.lower() == "2":
     abjad = "1234567890"
 if number.lower() == "3":
-    abjad == "abcdefghijklmnopqrstuvwxyz1234567890"
+    abjad = "abcdefghijklmnopqrstuvwxyz1234567890"
 
     
