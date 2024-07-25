@@ -3,6 +3,8 @@
 CHANGE LOG:
 
     0.0.6
+
+    (25/7/2024): Perbaikan BUG Pada mode Penebakan ALGORITMA ZIPFILE
     
     (22/7/2024): GUESSING ALGORITHM IS SUPPORTED
 
