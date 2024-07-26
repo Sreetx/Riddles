@@ -82,6 +82,7 @@ def zips():
 
 # MODE: ZIP Brute Force
 # Time: """+timestamp+"""
+# Desk: Year/M/D_clock/M/S
 # Zip File: """+f.split("/")[-1]+"""
 # Directory: """+f+"""
 # Password: """+p.decode().strip()+"""
@@ -109,15 +110,18 @@ def zips():
             sys.exit()
             os.system("cls||clear")
     #EXECALGORITMA
+        #TIME 
+        waktu = datetime.datetime.now()
+        times = waktu.strftime("%H%:%M%:%S")
         def jipa():
             print(kelabu+" ["+banorange+"#"+reset+kelabu+"] Masuk ke brute force mode algoritma"+reset)
-            print(putih+" ["+banorange+"#"+reset+putih+"] Lanjutkan dulu aktifitas anda karena ini mungkin akan sangat lama"+reset)
+            print(putih+" ["+banorange+times+"#"+reset+putih+"] Lanjutkan dulu aktifitas anda karena ini mungkin akan sangat lama"+reset)
             with zipfile.ZipFile(f) as z:
                 for lenght in range(1, int(algoritma.total) + 1):
                     while True:
                         try:
                             p = ''.join(random.choices(algoritma.abjad, k=int(algoritma.total)))
-                            print(kelabu+"\r ["+banhijau+"INFO"+reset+kelabu+"]"+orange+" Wordlist yang dibuat: "+reset+banhijau+str(p)+reset, end='', flush=True)
+                            print(kelabu+"\r ["+banhijau+"#"+reset+kelabu+"]"+orange+" Wordlist yang dibuat: "+reset+banhijau+str(p)+reset, end='', flush=True)
                             z.extractall('hasil', pwd=p.encode('utf-8'))
                             hasil(p)
                         except (EOFError, KeyboardInterrupt): print(kelabu+'\n ['+banmerah+'!'+reset+kelabu+'] '+merah+' Dibatalkan!'+reset);sys.exit()
@@ -182,6 +186,7 @@ def rars():
 
 # MODE: RAR Brute Force
 # Time: {timestamp}
+# Desk: Year/M/D_clock/M/S
 # Rar File: {r.split("/")[-1]}
 # Directory: {r}
 # Password: {pas.decode().strip()}
@@ -238,7 +243,13 @@ def rars():
                     sys.exit()
                 except (RuntimeError, rarfile.BadRarFile, rarfile.PasswordRequired):
                     continue
-                except rarfile.RarCannotExec: print(kelabu+" ["+banmerah+"!"+reset+kelabu+"] "+reset+merah+"Utilitas yang dibutuhkan rarfile tidal tersedia. Install sendiri! (7z or unrar)"+reset);sys.exit()
+                except rarfile.RarCannotExec: 
+                    print(kelabu+" ["+banmerah+"!"+reset+kelabu+"] "+reset+merah+"Utilitas yang dibutuhkan rarfile tidal tersedia. Install sendiri! (unrar)"+reset)
+                    enter = input(kelabu+" ["+banorange+"DONWLOAD"+reset+kelabu+"]"+puith+" Enter untuk masuk ke halaman unduhan"+reset)
+                    if chose.lower() == "":
+                        import webbrowser
+                        webbrower.open("https://www.rarlab.com/rar_add.htm")
+                    sys.exit()
 
     except (KeyboardInterrupt, EOFError): print(merah+'\n [!] CTRL+C Terdeteksi, keluar dari program....'+reset);sys.exit()
 
@@ -251,6 +262,7 @@ def helpp():
     print(putih+"\n[*] USAGE")
     print(orange+"   python3 "+sys.argv[0]+" --zip")
     print(orange+"   python3 "+sys.argv[0]+" --rar"+reset)
+    print(orange+"   python3 "+sys.argv[0]+" --7z"+reset)
     sup = input(kelabu+" ["+banhijau+"?"+reset+kelabu+"] Yuk support Kami di YouTube ["+banhijau+"y/n"+reset+kelabu+"]: "+reset)
     if sup.lower() == "y" or sup.lower() == "Y":
         print(kelabu+" ["+banhijau+"*"+reset+kelabu+"]"+putih+" Terima kasih karena sudah support Kami... :)"+reset)
@@ -261,17 +273,39 @@ def helpp():
 def info():
     print(kelabu+"["+banhijau+"!"+reset+kelabu+"] "+putih+" Ketikan python3 "+sys.argv[0]+" --hh Untuk info lebih lanjut(Gk bisa otomatis bjir)\n"+reset)
     
+def updates():
+    try:
+        import requests
+        import socket
+    except ImportError:
+        print(putih+" ["+banmerah+"!"+reset+putih+"] python3-requests not found!"+reset)
+        os.system("apt install python3-requests")
+        os.system("pip install requests")
+    print(kelabu+" ["+banorange+"UPDATE"+reset+kelabu+"]"+putih+" Checking Update..."+reset);time.sleep(0.2)
+    print(kelabu+" ["+banorange+"UPDATE"+reset+kelabu+"]"+putih+" Installing Update..."+reset);time.sleep(0.2)
+    req = requests.get("https://raw.githubusercontent.com/Sreetx/Riddles/master/src/main.py")
+    req_str = req.content.decode("utf-8")
+    try:
+        socket.create_connection(("8.8.8.8", 53), timeout=3)
+        req.raise_for_status()
+        with open(sys.argv[0], "w", encoding="utf-8") as fle:
+            fle.write(req_str)
+    except (socket.timeout, socket.gaierror): print(putih+" ["+banmerah+"!"+reset+putih+"] Cek koneksi internet kamu"+reset);sys.exit()
+    print(kelabu+" ["+banorange+"UPDATE"+reset+kelabu+"]"+putih+" Succed..."+reset);sys.exit()
+    
 menu = optparse.OptionParser(info())
 menu.add_option('--zip', dest="zipp", action='store_true', default=False)
 menu.add_option('--rar', dest="rarr", action='store_true', default=False)
 menu.add_option('--hh', dest="hh", action='store_true', default=False)
 menu.add_option('--7z', dest='szip', action="store_true", default=False)
+menu.add_option('--update', dest="update", action='store_true', default=False)
 
 (option, args) = menu.parse_args()
 rarr = option.rarr
 zipp = option.zipp
 hh = option.hh
 sz = option.szip
+update = option.update
 
 if hh:
     os.system("cls||clear")
@@ -293,9 +327,10 @@ if sz:
         if szz.lower() == "y" or szz.lower() == "Y":
             try:
                 import requests
-                req = requests.get("https://raw.githubusercontent.com/Sreetx/Extras/sevenzip.py")
-                with open("sevenzip.py", "wb") as file:
-                        file.write(req.content)
+                req = requests.get("https://raw.githubusercontent.com/Sreetx/Riddles/master/src/Extras/sevenzippy.py")
+                req_str = req.content.decode("utf-8")
+                with open("~/Riddles/src/Extras/sevenzippy.py", "w", encode="utf-8") as file:
+                        file.write(req_str)
                 print(borange+" [*] Terinsall! Mulai ulang script sekarang!");sys.exit()
             except ImportError:
                 print(merah+" [+] Python3-requests akan diinstall terlebih dahulu untuk mengunduh script ini"+reset)
@@ -304,3 +339,5 @@ if sz:
                 os.system("apt install python3-requests")
         else:
             pass
+if update:
+    updates()
