@@ -115,7 +115,7 @@ def zips():
         times = waktu.strftime("%H%:%M%:%S")
         def jipa():
             print(kelabu+" ["+banorange+"#"+reset+kelabu+"] Masuk ke brute force mode algoritma"+reset)
-            print(putih+" ["+banorange+times+"#"+reset+putih+"] Lanjutkan dulu aktifitas anda karena ini mungkin akan sangat lama"+reset)
+            print(putih+" ["+banorange+times+reset+putih+"] Lanjutkan dulu aktifitas anda karena ini mungkin akan sangat lama"+reset)
             with zipfile.ZipFile(f) as z:
                 for lenght in range(1, int(algoritma.total) + 1):
                     while True:
