@@ -25,9 +25,9 @@ banner = borange+"""
 <+========================================================+>
  |"""+reset+hijau+""" Creator:   """+putih+""" Sreetx  """+borange+"""                                   |
  |"""+reset+hijau+""" Language:  """+putih+""" Python3  """+borange+"""                                  |
- |"""+reset+hijau+""" Version:   """+putih+""" 0.0.6  """+borange+"""                                    |
+ |"""+reset+hijau+""" Version:   """+putih+""" 0.0.7  """+borange+"""                                    |
  |"""+reset+hijau+""" Github:   """+putih+"""  https://github.com/Sreetx   """+borange+"""               |
  |"""+reset+hijau+""" YouTube: """+putih+"""   https://www.youtube.com/@linggachannel4781 """+borange+"""|
  >========================================================<"""+reset+bputih+"""
 
- [*] File wordlist bawaan ada di "word/wordlist.txt di script ini!"""+reset
+ [*] File wordlist bawaan ada di folder "word/wordlist.txt di script ini!"""+reset
