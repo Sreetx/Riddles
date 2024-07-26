@@ -2,6 +2,11 @@
 
 CHANGE LOG:
 
+
+    0.0.7
+
+    (26/7/2024): Penambahan Opsi Update pada script
+
     0.0.6
 
     (25/7/2024): Perbaikan BUG Pada mode Penebakan ALGORITMA ZIPFILE
