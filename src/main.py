@@ -284,7 +284,7 @@ def helpp():
     print(orange+"   python3 "+sys.argv[0]+" --rar"+reset)
     print(orange+"   python3 "+sys.argv[0]+" --7z"+reset)
     print(orange+"   python3 "+sys.argv[0]+" --update"+reset)
-    print(orange+"   python3 "+sys.argv[0]+" --update_module"+reset)
+    print(orange+"   python3 "+sys.argv[0]+" --update-module"+reset)
     sup = input(kelabu+" ["+banhijau+"?"+reset+kelabu+"] Yuk support Kami di YouTube ["+banhijau+"y/n"+reset+kelabu+"]: "+reset)
     if sup.lower() == "y" or sup.lower() == "Y":
         print(kelabu+" ["+banhijau+"*"+reset+kelabu+"]"+putih+" Terima kasih karena sudah support Kami... :)"+reset)
