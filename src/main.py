@@ -312,6 +312,7 @@ upgort = option.update_module
 if upgort:
     try:
         import socket
+        import requests
         socket.create_connection(("8.8.8.8", 53), timeout=3)
         print(kelabu+" ["+banorange+"UPDATE"+reset+kelabu+"]"+putih+" Checking Update..."+reset);time.sleep(0.2)
         req1 = requests.get("https://raw.githubusercontent.com/Sreetx/Riddles/master/src/Extras/algoritma.py")
