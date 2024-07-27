@@ -354,8 +354,8 @@ if sz:
     os.system("cls||clear")
     print(banner)
     try:
-        import sevenzippy
-        sevenzip.Sxc()
+        from Extras import sevenzippy
+        sevenzippy.Sxc()
     except ImportError:
         szz = input(putih+" ["+banmerah+"!"+reset+putih+"]"+orange+" Install Riddles - 7Zip Cracker? "+kelabu+"["+banhijau+"y/n"+reset+kelabu+"]: "+reset)
         if szz.lower() == "y" or szz.lower() == "Y":
