@@ -3,8 +3,10 @@
 CHANGE LOG:
 
 
-    0.0.7
+    1.1.7
 
+    (27/7/2024): Penambahan Opsi brute force word tersusun dan tidak tersusuh serta perbaikan pada Mode ZIP FILE BRUTE FORCE
+    
     (27/7/2024): Penambahan Opsi update module dan Perbaikan bug pada mode 7zip
     
     (26/7/2024): Penambahan Opsi Update pada script
