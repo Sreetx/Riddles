@@ -3,21 +3,23 @@
 CHANGE LOG:
 
 
-    #1.1.7
+    # 1.1.7
 
     (27/7/2024): Penambahan Opsi brute force word tersusun dan tidak tersusuh serta perbaikan pada Mode ZIP FILE BRUTE FORCE
     
     (27/7/2024): Penambahan Opsi update module dan Perbaikan bug pada mode 7zip
+
+    # 0.1.7
     
     (26/7/2024): Penambahan Opsi Update pada script
 
-    #0.0.6
+    # 0.0.6
 
     (25/7/2024): Perbaikan BUG Pada mode Penebakan ALGORITMA ZIPFILE
     
     (22/7/2024): GUESSING ALGORITHM IS SUPPORTED
 
-    #0.0.5
+    # 0.0.5
     
     (18/7/2024): SUPPORTED RAR FILE!!
 
@@ -32,9 +34,8 @@ Jika berinisiatif untuk mengunduh ayo bantu saya biar bisa lebih giat menghibur 
 
 
 YouTube:
-
-
-    https://www.youtube.com/@linggachannel4781
+    
+   https://www.youtube.com/@linggachannel4781
 
 Dokumentasi:
 
