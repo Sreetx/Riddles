@@ -115,7 +115,7 @@ def zips():
         times = waktu.strftime("%H%:%M%:%S")
         def jipa():
             print(kelabu+" ["+banorange+"#"+reset+kelabu+"] Masuk ke brute force mode algoritma"+reset)
-            print(putih+" ["+banorange+times+reset+putih+"] Lanjutkan dulu aktifitas anda karena ini mungkin akan sangat lama"+reset)
+            print(putih+" ["+banorange+times+"#"+reset+putih+"] Lanjutkan dulu aktifitas anda karena ini mungkin akan sangat lama"+reset)
             with zipfile.ZipFile(f) as z:
                 for lenght in range(1, int(algoritma.total) + 1):
                     while True:
@@ -299,6 +299,7 @@ menu.add_option('--rar', dest="rarr", action='store_true', default=False)
 menu.add_option('--hh', dest="hh", action='store_true', default=False)
 menu.add_option('--7z', dest='szip', action="store_true", default=False)
 menu.add_option('--update', dest="update", action='store_true', default=False)
+menu.add_option("--update-module", dest="update_module", action="store_true", default=False)
 
 (option, args) = menu.parse_args()
 rarr = option.rarr
@@ -306,7 +307,35 @@ zipp = option.zipp
 hh = option.hh
 sz = option.szip
 update = option.update
+upgort = option.update_module
 
+if upgort:
+    try:
+        import socket
+        socket.create_connection(("8.8.8.8", 53), timeout=3)
+        print(kelabu+" ["+banorange+"UPDATE"+reset+kelabu+"]"+putih+" Checking Update..."+reset);time.sleep(0.2)
+        req1 = requests.get("https://raw.githubusercontent.com/Sreetx/Riddles/master/src/Extras/algoritma.py")
+        req2 = requests.get("https://raw.githubusercontent.com/Sreetx/Riddles/master/src/Extras/banner.py")
+        req3 = requests.get("https://raw.githubusercontent.com/Sreetx/Riddles/master/src/Extras/sevenzippy.py")
+        req4 = requests.get("https://raw.githubusercontent.com/Sreetx/Riddles/master/src/Extras/color/warna.py")
+        req1_str = req1.content.decode("utf-8")
+        req2_str = req2.content.decode("utf-8")
+        req3_str = req3.content.decode("utf-8")
+        req4_str = req4.content.decode("utf-8")
+        print(kelabu+"\n ["+banorange+"UPDATE"+reset+kelabu+"]"+putih+" Installing Algoritma..."+reset);time.sleep(0.2)
+        with open("~/Riddles/src/Extras/algoritma.py", "w", encoding="utf-8") as a:
+            a.write(req1_str)
+        print(kelabu+" ["+banorange+"UPDATE"+reset+kelabu+"]"+putih+" Installing banner..."+reset);time.sleep(0.2)
+        with open("~/Riddles/src/Extras/banner.py", "w", encoding="utf-8") as b:
+            b.write(req2_str)
+        print(kelabu+" ["+banorange+"UPDATE"+reset+kelabu+"]"+putih+" Installing 7z-File Brute force"+reset);time.sleep(0.2)
+        with open("~/Riddles/src/Extras/sevenzippy.py", "w", encoding="utf-8") as c:
+            c.write(req3_str)
+        print(kelabu+" ["+banorange+"UPDATE"+reset+kelabu"]"+putih+" Installing Warna"+reset);time.sleep(0.2)
+        with open("~/Riddles/src/Extras/color/warna.py", "w", encoding="utf-8") as d:
+            d.write(req4_str)
+        print(putih+"\n ["+banhijau+"UPDATE"+reset+putih+"] Update Succed!"+reset);sys.exit()
+            
 if hh:
     os.system("cls||clear")
     helpp()
