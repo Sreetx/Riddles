@@ -263,6 +263,8 @@ def helpp():
     print(orange+"   python3 "+sys.argv[0]+" --zip")
     print(orange+"   python3 "+sys.argv[0]+" --rar"+reset)
     print(orange+"   python3 "+sys.argv[0]+" --7z"+reset)
+    print(orange+"   python3 "+sys.argv[0]+" --update"+reset)
+    print(orange+"   python3 "+sys.argv[0]+" --update_module"+reset)
     sup = input(kelabu+" ["+banhijau+"?"+reset+kelabu+"] Yuk support Kami di YouTube ["+banhijau+"y/n"+reset+kelabu+"]: "+reset)
     if sup.lower() == "y" or sup.lower() == "Y":
         print(kelabu+" ["+banhijau+"*"+reset+kelabu+"]"+putih+" Terima kasih karena sudah support Kami... :)"+reset)
@@ -324,16 +326,16 @@ if upgort:
         req3_str = req3.content.decode("utf-8")
         req4_str = req4.content.decode("utf-8")
         print(kelabu+"\n ["+banorange+"UPDATE"+reset+kelabu+"]"+putih+" Installing Algoritma..."+reset);time.sleep(0.2)
-        with open("~/Riddles/src/Extras/algoritma.py", "w", encoding="utf-8") as a:
+        with open("src/Extras/algoritma.py", "w", encoding="utf-8") as a:
             a.write(req1_str)
         print(kelabu+" ["+banorange+"UPDATE"+reset+kelabu+"]"+putih+" Installing banner..."+reset);time.sleep(0.2)
-        with open("~/Riddles/src/Extras/banner.py", "w", encoding="utf-8") as b:
+        with open("src/Extras/banner.py", "w", encoding="utf-8") as b:
             b.write(req2_str)
         print(kelabu+" ["+banorange+"UPDATE"+reset+kelabu+"]"+putih+" Installing 7z-File Brute force"+reset);time.sleep(0.2)
-        with open("~/Riddles/src/Extras/sevenzippy.py", "w", encoding="utf-8") as c:
+        with open("src/Extras/sevenzippy.py", "w", encoding="utf-8") as c:
             c.write(req3_str)
         print(kelabu+" ["+banorange+"UPDATE"+reset+kelabu+"]"+putih+" Installing Warna"+reset);time.sleep(0.2)
-        with open("~/Riddles/src/Extras/color/warna.py", "w", encoding="utf-8") as d:
+        with open("src/Extras/color/warna.py", "w", encoding="utf-8") as d:
             d.write(req4_str)
         print(putih+"\n ["+banhijau+"UPDATE"+reset+putih+"] Update Succed!"+reset);sys.exit()
     except (socket.timeout, socket.gaierror): print(putih+" ["+banmerah+"!"+reset+putih+"] Cek koneksi internet"+reset);sys.exit()
