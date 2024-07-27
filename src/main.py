@@ -326,16 +326,16 @@ if upgort:
         req3_str = req3.content.decode("utf-8")
         req4_str = req4.content.decode("utf-8")
         print(kelabu+"\n ["+banorange+"UPDATE"+reset+kelabu+"]"+putih+" Installing Algoritma..."+reset);time.sleep(0.2)
-        with open("src/Extras/algoritma.py", "w", encoding="utf-8") as a:
+        with open("Extras/algoritma.py", "w", encoding="utf-8") as a:
             a.write(req1_str)
         print(kelabu+" ["+banorange+"UPDATE"+reset+kelabu+"]"+putih+" Installing banner..."+reset);time.sleep(0.2)
-        with open("src/Extras/banner.py", "w", encoding="utf-8") as b:
+        with open("Extras/banner.py", "w", encoding="utf-8") as b:
             b.write(req2_str)
         print(kelabu+" ["+banorange+"UPDATE"+reset+kelabu+"]"+putih+" Installing 7z-File Brute force"+reset);time.sleep(0.2)
-        with open("src/Extras/sevenzippy.py", "w", encoding="utf-8") as c:
+        with open("Extras/sevenzippy.py", "w", encoding="utf-8") as c:
             c.write(req3_str)
         print(kelabu+" ["+banorange+"UPDATE"+reset+kelabu+"]"+putih+" Installing Warna"+reset);time.sleep(0.2)
-        with open("src/Extras/color/warna.py", "w", encoding="utf-8") as d:
+        with open("Extras/color/warna.py", "w", encoding="utf-8") as d:
             d.write(req4_str)
         print(putih+"\n ["+banhijau+"UPDATE"+reset+putih+"] Update Succed!"+reset);sys.exit()
     except (socket.timeout, socket.gaierror): print(putih+" ["+banmerah+"!"+reset+putih+"] Cek koneksi internet"+reset);sys.exit()
