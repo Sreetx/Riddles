@@ -1,6 +1,6 @@
 try:
     import sys, os, time
-    from banner import banner
+    from Extras.banner import banner
     from Extras.color.warna import orange
     from Extras.color.warna import putih
     from Extras.color.warna import merah
