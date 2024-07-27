@@ -331,11 +331,13 @@ if upgort:
         print(kelabu+" ["+banorange+"UPDATE"+reset+kelabu+"]"+putih+" Installing 7z-File Brute force"+reset);time.sleep(0.2)
         with open("~/Riddles/src/Extras/sevenzippy.py", "w", encoding="utf-8") as c:
             c.write(req3_str)
-        print(kelabu+" ["+banorange+"UPDATE"+reset+kelabu"]"+putih+" Installing Warna"+reset);time.sleep(0.2)
+        print(kelabu+" ["+banorange+"UPDATE"+reset+kelabu+"]"+putih+" Installing Warna"+reset);time.sleep(0.2)
         with open("~/Riddles/src/Extras/color/warna.py", "w", encoding="utf-8") as d:
             d.write(req4_str)
         print(putih+"\n ["+banhijau+"UPDATE"+reset+putih+"] Update Succed!"+reset);sys.exit()
-            
+    except (socket.timeout, socket.gaierror): print(putih+" ["+banmerah+"!"+reset+putih+"] Cek koneksi internet"+reset);sys.exit()
+    print(kelabu+" ["+banorange+"UPDATE"+reset+kelabu+"]"+putih+" Succed..."+reset);sys.exit()
+    
 if hh:
     os.system("cls||clear")
     helpp()
