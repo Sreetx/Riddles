@@ -5,6 +5,8 @@ CHANGE LOG:
 
     0.0.7
 
+    (27/7/2024): Penambahan Opsi update module dan Perbaikan bug pada mode 7zip
+    
     (26/7/2024): Penambahan Opsi Update pada script
 
     0.0.6
