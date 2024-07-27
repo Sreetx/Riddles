@@ -3,7 +3,7 @@
 CHANGE LOG:
 
 
-    1.1.7
+    #1.1.7
 
     (27/7/2024): Penambahan Opsi brute force word tersusun dan tidak tersusuh serta perbaikan pada Mode ZIP FILE BRUTE FORCE
     
@@ -11,13 +11,13 @@ CHANGE LOG:
     
     (26/7/2024): Penambahan Opsi Update pada script
 
-    0.0.6
+    #0.0.6
 
     (25/7/2024): Perbaikan BUG Pada mode Penebakan ALGORITMA ZIPFILE
     
     (22/7/2024): GUESSING ALGORITHM IS SUPPORTED
 
-    0.0.5
+    #0.0.5
     
     (18/7/2024): SUPPORTED RAR FILE!!
 
