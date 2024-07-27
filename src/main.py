@@ -18,7 +18,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 try:
     try:
-        import sys, os, time, optparse, webbrowser, random, zlib
+        import sys, os, time, optparse, webbrowser, random, zlib, itertools
         from Extras.banner import banner
         from Extras.color.warna import orange
         from Extras.color.warna import putih
@@ -72,7 +72,7 @@ except KeyboardInterrupt: print(bputih+' ['+banmerah+'!'+reset+bputih+']'+reset+
 c = ""
 def zips():
     try:
-        def hasil(p):
+        def hasil(p, algort2):
             hpst = socket.gethostname()
             date = datetime.datetime.now()
             timestamp = date.strftime("%Y%m%d_%H%M%S")
@@ -85,25 +85,31 @@ def zips():
 # Desk: Year/M/D_clock/M/S
 # Zip File: """+f.split("/")[-1]+"""
 # Directory: """+f+"""
-# Password: """+p.decode().strip()+"""
+# Password: """+str(p).strip()+"""
 # Device Model: """+hpst+"""
 
 #################################
 # Support Me!! IN YOUTUBE
 """
-            print(reset+borange+"""
+            try:
+                print(reset+borange+"""
 <=======================================>
  |"""+reset+putih+"""             Password Found    """+borange+"""       |
  >======================================<
  |"""+reset+""" Zip File: """+hijau+f.split("/")[-1]+reset+borange+"""
- |"""+reset+""" Zip Directory: """+hijau+f+borange+"""
- |"""+reset+""" Password: """, banhijau+p.decode().strip()+reset+borange+"""
- |"""+reset+""" Wordlist Directory: """+hijau+tebak+borange+"""
- |"""+reset+""" Log: """+hijau+"""~/logs/succed_"""+timestamp+reset+borange+"""
+ |"""+reset+""" Zip Directory: """+hijau+f+borange)
+
+                if algort2.lower() == "y" or algort2.lower() == "Y":
+                    print(borange+""" |"""+reset+""" Password: """+banhijau+str(p)+reset)
+                else:
+                    print(borange+""" |"""+reset+""" Password: """+banhijau+p.decode().strip()+reset)
+                    print(borange+""" |"""+reset+""" Wordlist Directory: """+hijau+tebak+reset)
+                print(borange+""" |"""+reset+""" Log: """+hijau+"""~/logs/succed_"""+timestamp+reset+borange+"""
  |"""+reset+""" System: """+hijau+hpst+borange+"""
 <=======================================>"""+reset+orange+"""
  [*] File sudah di ekstraksi dan disimpan di folder "hasil" di script ini
  [*] Terima Kasih karena telah menggunakan script ini"""+reset)
+            except UnboundLocalError: pass
             bite = filed.encode('utf-8')
             with open(logs, 'wb') as fd:
                 fd.write(bite)
@@ -113,29 +119,43 @@ def zips():
         #TIME 
         waktu = datetime.datetime.now()
         times = waktu.strftime("%H%:%M%:%S")
-        def jipa():
+        def jipa(algort2):
             print(kelabu+" ["+banorange+"#"+reset+kelabu+"] Masuk ke brute force mode algoritma"+reset)
-            print(putih+" ["+banorange+times+"#"+reset+putih+"] Lanjutkan dulu aktifitas anda karena ini mungkin akan sangat lama"+reset)
-            with zipfile.ZipFile(f) as z:
-                for lenght in range(1, int(algoritma.total) + 1):
-                    while True:
-                        try:
-                            p = ''.join(random.choices(algoritma.abjad, k=int(algoritma.total)))
-                            print(kelabu+"\r ["+banhijau+"#"+reset+kelabu+"]"+orange+" Wordlist yang dibuat: "+reset+banhijau+str(p)+reset, end='', flush=True)
-                            z.extractall('hasil', pwd=p.encode('utf-8'))
-                            hasil(p)
-                        except (EOFError, KeyboardInterrupt): print(kelabu+'\n ['+banmerah+'!'+reset+kelabu+'] '+merah+' Dibatalkan!'+reset);sys.exit()
-                        except (RuntimeError, zipfile.BadZipFile, zipfile.LargeZipFile, zlib.error): continue
+            print(putih+" ["+banorange+times+reset+putih+"] Lanjutkan dulu aktifitas anda karena ini mungkin akan sangat lama"+reset)
+            if  algort2.lower() == "y" or algort2.lower() == "Y":
+                with zipfile.ZipFile(f) as z:
+                    for lenght in range(1, + int(algoritma.total) + 1):
+                        while True:
+                            for passwodd in itertools.product(algoritma.abjad, repeat=int(algoritma.total)):
+                                try:
+                                    p = ''.join(passwodd)
+                                    print(kelabu+"\r ["+banhijau+"#"+reset+kelabu+"]"+orange+" Wordlist yang dibuat: "+reset+banhijau+str(p)+reset, end='', flush=True)
+                                    z.extractall('hasil', pwd=p.encode("utf-8"))
+                                    hasil(p, algort2)
+                                except (EOFError, KeyboardInterrupt): print(kelabu+'\n ['+banmerah+'!'+reset+kelabu+'] '+merah+' Dibatalkan!'+reset);sys.exit()
+                                except (RuntimeError, zipfile.BadZipFile, zipfile.LargeZipFile, zlib.error): continue
+            if algort2.lower() == "n" or algort2.lower() == "N":
+                with zipfile.ZipFile(f) as z:
+                    for lenght in range(1, int(algoritma.total) + 1):
+                        while True:
+                            try:
+                                p = ''.join    (random.choices(algoritma.abjad, k=int(algoritma.total)))
+                                print(kelabu+"\r ["+banhijau+"#"+reset+kelabu+"]"+orange+" Wordlist yang dibuat: "+reset+banhijau+str(p)+reset, end='', flush=True)
+                                z.extractall('hasil', pwd=p.encode("utf-8"))
+                                hasil(p, algort2)
+                            except (EOFError, KeyboardInterrupt): print(kelabu+'\n ['+banmerah+'!'+reset+kelabu+'] '+merah+' Dibatalkan!'+reset);sys.exit()
+                            except (RuntimeError, zipfile.BadZipFile, zipfile.LargeZipFile, zlib.error): continue
     
     #EXECNORMAL
         def jip():
             j = len(list(open(tebak, 'rb')))
             print(kelabu+' ['+banhijau+'*'+reset+kelabu+'] Jumlah kata yang akan dicek:'+hijau, j)
+            algort2 = "n"
             with zipfile.ZipFile(f) as z, open(tebak, 'rb') as p:
                 for p in tqdm(p, total=j, unit='word'):
                     try:
                         z.extractall('hasil', pwd=p.strip())
-                        hasil(p)
+                        hasil(p, algort2)
                     except (EOFError, KeyboardInterrupt): print(kelabu+' ['+banmerah+'!'+reset+kelabu+'] '+merah+' Dibatalkan!'+reset);sys.exit()
                     except (RuntimeError, zipfile.BadZipFile, zipfile.LargeZipFile, zlib.error): continue
     #ZIP
@@ -144,10 +164,10 @@ def zips():
         f = input(kelabu+' ['+banhijau+'?'+reset+kelabu+'] Masukkan lokasi file zip anda: '+reset)
         algort = input(putih+" ["+banorange+"?"+reset+putih+"] Gunakan algoritma? [y/n]: "+reset)
         if algort.lower() == "y" or algort.lower() == "Y":
+            algort2 = input(putih+" ["+banorange+"?"+reset+putih+"] Gunakan algoritma tersusun? [y/n]: "+reset)
             try:
-                from Extras import algoritma
+             from Extras import algoritma
             except ImportError as e:
-                print(e)
                 print(putih+" ["+banmerah+"!"+reset+putih+"] "+merah+"Modul hiang! Install ulang script ini dari repositori gw"+reset);sys.exit()
         elif algort.lower() == "n":
             tebak = input(kelabu+' ['+banhijau+'?'+reset+kelabu+'] Masukkan lokasi file wordlist anda: '+reset)
@@ -166,7 +186,7 @@ def zips():
         except (FileNotFoundError, zipfile.BadZipFile): print(borange+' ['+reset+banmerah+'!'+reset+borange+'] '+merah+'Terdeteksi bukan file zip atau anda salah memasukkan path. Koreksi penulisan path'+reset);sys.exit()
         
         if algort.lower() == "y" or algort.lower() == "Y":
-            jipa()
+            jipa(algort2)
         if algort.lower() == "n":
             jip()
         else:
