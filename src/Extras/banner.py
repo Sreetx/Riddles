@@ -25,7 +25,7 @@ banner = borange+"""
 <+========================================================+>
  |"""+reset+hijau+""" Creator:   """+putih+""" Sreetx  """+borange+"""                                   |
  |"""+reset+hijau+""" Language:  """+putih+""" Python3  """+borange+"""                                  |
- |"""+reset+hijau+""" Version:   """+putih+""" 0.0.7  """+borange+"""                                    |
+ |"""+reset+hijau+""" Version:   """+putih+""" 1.1.7  """+borange+"""                                    |
  |"""+reset+hijau+""" Github:   """+putih+"""  https://github.com/Sreetx   """+borange+"""               |
  |"""+reset+hijau+""" YouTube: """+putih+"""   https://www.youtube.com/@linggachannel4781 """+borange+"""|
  >========================================================<"""+reset+bputih+"""
