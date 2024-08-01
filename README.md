@@ -3,6 +3,10 @@
 CHANGE LOG:
 
 
+    #1.2.7
+
+    (1/8/2024): Penambahan Opsi brute force menggunakan algoritma pada RAR FILE seperti pada menu ZIP FILE
+
     #1.1.7
 
     (27/7/2024): Penambahan Opsi brute force word tersusun dan tidak tersusuh serta perbaikan pada Mode ZIP FILE BRUTE FORCE
