@@ -59,7 +59,7 @@ try:
         if sys.platform in ['linux', 'linux2']:
             os.system('pip install rarfile')
             os.system('pip install tqdm')
-            os.system('pip install py7zr')
+            os.system('')
             print(borange+' [*] Jika modul terpasang dengan baik tekan CTR+C, mulai Ulang script'+reset)
             enter = print(borange+" [*] Jika ada masalah dengan pip tekan enter untuk menginstall nya (for Debian and derivative users)"+reset)
             os.system('apt install python3-rarfile')
@@ -68,7 +68,8 @@ try:
             sys.exit()
         else: pass
 except KeyboardInterrupt: print(bputih+' ['+banmerah+'!'+reset+bputih+']'+reset+merah+' Canceled by USER!'+reset);sys.exit()
-
+waktu = datetime.datetime.now()
+times = waktu.strftime("%H%:%M%:%S")
 c = ""
 def zips():
     try:
@@ -116,9 +117,6 @@ def zips():
             sys.exit()
             os.system("cls||clear")
     #EXECALGORITMA
-        #TIME 
-        waktu = datetime.datetime.now()
-        times = waktu.strftime("%H%:%M%:%S")
         def jipa(algort2):
             print(kelabu+" ["+banorange+"#"+reset+kelabu+"] Masuk ke brute force mode algoritma"+reset)
             print(putih+" ["+banorange+times+reset+putih+"] Lanjutkan dulu aktifitas anda karena ini mungkin akan sangat lama"+reset)
@@ -158,6 +156,7 @@ def zips():
                         hasil(p, algort2)
                     except (EOFError, KeyboardInterrupt): print(kelabu+' ['+banmerah+'!'+reset+kelabu+'] '+merah+' Dibatalkan!'+reset);sys.exit()
                     except (RuntimeError, zipfile.BadZipFile, zipfile.LargeZipFile, zlib.error): continue
+
     #ZIP
         print(banner)
         print(kelabu+"\n ["+banorange+"ZIP"+reset+kelabu+"] Anda masuk dalam mode ekstraksi ZIP"+reset)
@@ -196,54 +195,117 @@ def zips():
                 
 def rars():
     try:
-        def hasil(pas, r, word):
+        def hasil(pas, r, algort2):
             hpst = socket.gethostname()
             date = datetime.datetime.now()
             timestamp = date.strftime("%Y%m%d_%H%M%S")
             logs = f"logs/succed_{timestamp}.txt"
-            filed = f"""#LOG FILE
+            filed = """#LOG FILE
 #PASSWORD FOUND
 
 # MODE: RAR Brute Force
-# Time: {timestamp}
+# Time: """+timestamp+"""
 # Desk: Year/M/D_clock/M/S
-# Rar File: {r.split("/")[-1]}
-# Directory: {r}
-# Password: {pas.decode().strip()}
-# Device Model: {hpst}
+# Rar File: """+r.split("/")[-1]+"""
+# Directory: """+r+"""
+# Password: """+str(pas).strip()+"""
+# Device Model: """+hpst+"""
 
 #################################
 # Support Me!! IN YOUTUBE
 """
-            print(reset+borange+"""
+            try:
+                print(reset+borange+"""
 <=======================================>
  |"""+reset+putih+"""             Password Found    """+borange+"""       |
  >======================================<
  |"""+reset+""" RAR File: """+hijau+r.split("/")[-1]+reset+borange+"""
- |"""+reset+""" RAR Directory: """+hijau+r+borange+"""
- |"""+reset+""" Password: """+banhijau+pas.decode().strip()+reset+borange+"""
- |"""+reset+""" Wordlist Directory: """+hijau+word+borange+"""
- |"""+reset+""" Log: """+hijau+"""~/logs/succed_"""+timestamp+reset+borange+"""
+ |"""+reset+""" RAR Directory: """+hijau+r+borange)
+
+                if algort2.lower() == "y" or algort2.lower() == "Y":
+                    print(borange+""" |"""+reset+""" Password: """+banhijau+str(pas)+reset)
+                else:
+                    print(borange+""" |"""+reset+""" Password: """+banhijau+pas.decode().strip()+reset)
+                    print(borange+""" |"""+reset+""" Wordlist Directory: """+hijau+word+reset)
+                print(borange+""" |"""+reset+""" Log: """+hijau+"""~/logs/succed_"""+timestamp+reset+borange+"""
  |"""+reset+""" System: """+hijau+hpst+borange+"""
 <=======================================>"""+reset+orange+"""
  [*] File sudah di ekstraksi dan disimpan di folder "hasil" di script ini
  [*] Terima Kasih karena telah menggunakan script ini"""+reset)
+            except UnboundLocalError: pass
             bite = filed.encode('utf-8')
             with open(logs, 'wb') as fd:
                 fd.write(bite)
             sys.exit()
-            
+        #EXECALGORITMA
+        def rara(algort2):
+            from Extras import algoritma
+            print(kelabu+" ["+banorange+"#"+reset+kelabu+"] Masuk ke RAR brute force mode algoritma"+reset)
+            print(putih+" ["+banorange+times+reset+putih+"] Lanjutkan dulu aktifitas anda karena ini mungkin akan sangat lama"+reset)
+            if  algort2.lower() == "y" or algort2.lower() == "Y":
+                with rarfile.RarFile(r) as rr:
+                    for lenght in range(1, + int(algoritma.total) + 1):
+                        while True:
+                            for passwodd in itertools.product(algoritma.abjad, repeat=int(algoritma.total)):
+                                try:
+                                    pas = ''.join(passwodd)
+                                    print(kelabu+"\r ["+banhijau+"#"+reset+kelabu+"]"+orange+" Wordlist yang dibuat: "+reset+banhijau+str(pas)+reset, end='', flush=True)
+                                    rr.extractall('hasil', pwd=pas.encode("utf-8"))
+                                    hasil(pas, r, algort2)
+                                except (RuntimeError, rarfile.BadRarFile, rarfile.PasswordRequired): continue
+                                except rarfile.RarCannotExec:
+                                    print(kelabu+" ["+banmerah+"!"+reset+kelabu+"] "+reset+merah+"Utilitas yang dibutuhkan rarfile tidal tersedia. Install sendiri! (unrar)"+reset)
+                                    enter = input(kelabu+" ["+banorange+"DONWLOAD"+reset+kelabu+"]"+putih+" Enter untuk masuk ke halaman unduhan"+reset);sys.exit()
+            if algort2.lower() == "n" or algort2.lower() == "N":
+                with zipfile.ZipFile(f) as z:
+                    for lenght in range(1, int(algoritma.total) + 1):
+                        while True:
+                            try:
+                                pas = ''.join(random.choices(algoritma.abjad, k=int(algoritma.total)))
+                                print(kelabu+"\r ["+banhijau+"#"+reset+kelabu+"]"+orange+" Wordlist yang dibuat: "+reset+banhijau+str(pas)+reset, end='', flush=True)
+                                z.extractall('hasil', pwd=pas.encode("utf-8"))
+                                hasil(pas, r, algort2)
+                            except (EOFError, KeyboardInterrupt): print(kelabu+'\n ['+banmerah+'!'+reset+kelabu+'] '+merah+' Dibatalkan!'+reset)
+                            except (RuntimeError, rarfile.BadRarFile, rarfile.PasswordRequired): continue
+                            except rarfile.RarCannotExec: 
+                                print(kelabu+" ["+banmerah+"!"+reset+kelabu+"] "+reset+merah+"Utilitas yang dibutuhkan rarfile tidal tersedia. Install sendiri! (unrar)"+reset)
+                                enter = input(kelabu+" ["+banorange+"DONWLOAD"+reset+kelabu+"]"+putih+" Enter untuk masuk ke halaman unduhan"+reset);sys.exit()
+        #EXECNORMAL
+        def rarj():
+            algort2 = "n"
+            print(kelabu+' ['+banhijau+'*'+reset+kelabu+'] Jumlah kata yang akan dicek:'+hijau, ttl)
+            with rarfile.RarFile(r) as rr, open(word, 'rb') as rarf:
+                rarf.seek(0)
+                for pas in tqdm(rarf, total=ttl, unit='word'):
+                    try:
+                        rr.extractall('hasil', pwd=pas.rstrip())
+                        hasil(pas, r, algort2)
+                    except KeyboardInterrupt:
+                        print(merah+"\n [!] Dibatalkan!"+reset)
+                        sys.exit()
+                    except (RuntimeError, rarfile.BadRarFile, rarfile.PasswordRequired): continue
+                    except rarfile.RarCannotExec: 
+                        print(kelabu+" ["+banmerah+"!"+reset+kelabu+"] "+reset+merah+"Utilitas yang dibutuhkan rarfile tidal tersedia. Install sendiri! (unrar)"+reset)
+                        enter = input(kelabu+" ["+banorange+"DONWLOAD"+reset+kelabu+"]"+puith+" Enter untuk masuk ke halaman unduhan"+reset)
+                        if enter.lower() == "":
+                            import webbrowser
+                            webbrower.open("https://www.rarlab.com/rar_add.htm")
+                        sys.exit()
     #RAR
         rarfile.UNRAR_TOOL ="unrar"
         os.system("cls||clear")
         print(banner)
         print(kelabu+"\n ["+banorange+"RAR"+reset+kelabu+"] Anda masuk dalam mode ekstraksi RAR"+reset)
         r = input(kelabu+' ['+banhijau+'?'+reset+kelabu+'] Masukkan lokasi file RAR anda: '+reset)
-        word = input(kelabu+' ['+banhijau+'?'+reset+kelabu+'] Masukkan lokasi file wordlist: '+reset)
-        try:
-            ttl = len(list(open(word, "rb")))
-        except FileNotFoundError:
-            print(borange+' ['+reset+banmerah+'!'+reset+borange+'] '+merah+' Perhatikan penulisan path wordlist'+reset);sys.exit()
+        algort = input(putih+" ["+banorange+"?"+reset+putih+"] Gunakan algoritma? [y/n]: "+reset)
+        if algort.lower() == "y" or algort.lower() == "Y":
+            algort2 = input(putih+" ["+banorange+"?"+reset+putih+"] Gunakan algoritma tersusun? [y/n]: "+reset)
+        else:
+            word = input(kelabu+' ['+banhijau+'?'+reset+kelabu+'] Masukkan lokasi file wordlist: '+reset)
+            try:
+                ttl = len(list(open(word, "rb")))
+            except FileNotFoundError:
+                print(borange+' ['+reset+banmerah+'!'+reset+borange+'] '+merah+' Perhatikan penulisan path wordlist'+reset);sys.exit()
         try:
             param = rarfile.RarFile(r)
         except (FileNotFoundError, rarfile.BadRarFile, rarfile.NotRarFile):  print(borange+'\n ['+reset+banmerah+'!'+reset+borange+'] '+merah+'Terdeteksi bukan file RAR atau anda salah memasukkan path. Koreksi penulisan path!'+reset);sys.exit()
@@ -251,26 +313,10 @@ def rars():
         print(putih+'['+banorange+'INFO'+reset+putih+'] '+orange+'Ekstraksi akan segera dilakukan setelah password ditemukan\n'+reset)
         
     # HASH RAR
-        print(kelabu+' ['+banhijau+'*'+reset+kelabu+'] Jumlah kata yang akan dicek:'+hijau, ttl)
-        with rarfile.RarFile(r) as rr, open(word, 'rb') as rarf:
-            rarf.seek(0)
-            for pas in tqdm(rarf, total=ttl, unit='word'):
-                try:
-                    rr.extractall('hasil', pwd=pas.rstrip())
-                    hasil(pas, r, word)
-                except KeyboardInterrupt:
-                    print(merah+"\n [!] Dibatalkan!"+reset)
-                    sys.exit()
-                except (RuntimeError, rarfile.BadRarFile, rarfile.PasswordRequired):
-                    continue
-                except rarfile.RarCannotExec: 
-                    print(kelabu+" ["+banmerah+"!"+reset+kelabu+"] "+reset+merah+"Utilitas yang dibutuhkan rarfile tidal tersedia. Install sendiri! (unrar)"+reset)
-                    enter = input(kelabu+" ["+banorange+"DONWLOAD"+reset+kelabu+"]"+puith+" Enter untuk masuk ke halaman unduhan"+reset)
-                    if chose.lower() == "":
-                        import webbrowser
-                        webbrower.open("https://www.rarlab.com/rar_add.htm")
-                    sys.exit()
-
+        if algort.lower() == "y" or algort.lower() == "Y":
+            rara(algort2)
+        else:
+            rarj()
     except (KeyboardInterrupt, EOFError): print(merah+'\n [!] CTRL+C Terdeteksi, keluar dari program....'+reset);sys.exit()
 
 def helpp():
@@ -279,6 +325,9 @@ def helpp():
     print(orange+"   --rar    "+reset+"Digunakan untuk masuk ke opsi brute force password file rar")
     print(orange+"   --zip    "+reset+"Digunakan untuk masuk ke opsi brute force password file zip")
     print(orange+"   --hh    "+reset+"Digunakan untuk masuk ke opsi TAMPILAN UTAMA INI")
+    print(orange+"   --7z")
+    print(orange+"   --update    Untuk update script ini")
+    print(orange+"   --update-module    Untuk update module pada script ini"+reset)
     print(putih+"\n[*] USAGE")
     print(orange+"   python3 "+sys.argv[0]+" --zip")
     print(orange+"   python3 "+sys.argv[0]+" --rar"+reset)
