@@ -38,6 +38,9 @@ try:
         from Extras.color.warna import reset
     except ImportError:
         print(' [!] Harap install ulang script ini dari repository github kami!');sys.exit()
+        # Yang menjual dan membajak script ini tanpa izin gw atau jauh dari ketentuan lisensi jadi yatim
+        # Cuman gw yang bebas ngasih izin atau tidak nya kek kalian untuk menjual karena gw pembuat
+        # Kalo mau rekode silahkan, error tanggung sendiri
     os.system('mkdir hasil')
     os.system('mkdir logs')
     os.system('cls || clear')
