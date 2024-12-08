@@ -2,6 +2,10 @@
 
 CHANGE LOG:
 
+    #1.4.12
+
+    (8/12/2024): Sekarang mendukung mode Decomrpesi type AES
+
 
     #1.2.7
 
