@@ -38,10 +38,7 @@ try:
         from Extras.color.warna import reset
     except ImportError:
         print(' [!] Harap install ulang script ini dari repository github kami!');sys.exit()
-        # Yang menjual dan membajak script ini tanpa izin gw atau jauh dari ketentuan lisensi jadi yatim
-        # Cuman gw yang bebas ngasih izin atau tidak nya kek kalian untuk menjual karena gw pembuat
-        # Kalo mau rekode silahkan, error tanggung sendiri
-    os.system('mkdir hasil')
+    os.system('mkdir Extras/hasil')
     os.system('mkdir logs')
     os.system('cls || clear')
     try:
@@ -50,6 +47,7 @@ try:
         from tqdm import tqdm
         import datetime
         import socket
+        import pyzipper
 
     except ImportError:
         print(putih+' ['+banmerah+'!'+reset+putih+']'+borangekelip+' Module tidak lengkap'+reset)
@@ -58,16 +56,18 @@ try:
             os.system('pip install rarfile')
             os.system('pip install tqdm')
             os.system("pip install py7zr")
+            os.system('pip install pyzipper')
             sys.exit()
         if sys.platform in ['linux', 'linux2']:
             os.system('pip install rarfile')
             os.system('pip install tqdm')
-            os.system('')
+            os.system('pip install pyzipper')
             print(borange+' [*] Jika modul terpasang dengan baik tekan CTR+C, mulai Ulang script'+reset)
             enter = print(borange+" [*] Jika ada masalah dengan pip tekan enter untuk menginstall nya (for Debian and derivative users)"+reset)
             os.system('apt install python3-rarfile')
             os.system('apt install python3-tqdm')
             os.system('apt install python3-py7zr')
+            print(kelabu+" ["+banorange+"!"+reset+kelabu+"]"+putih+" Module pyzipper tetap harus diinstall pake pip, kalo pip lu error pake virtual enviroment (venv)"+reset)
             sys.exit()
         else: pass
 except KeyboardInterrupt: print(bputih+' ['+banmerah+'!'+reset+bputih+']'+reset+merah+' Canceled by USER!'+reset);sys.exit()
@@ -76,18 +76,22 @@ times = waktu.strftime("%H%:%M%:%S")
 c = ""
 def zips():
     try:
-        def hasil(p, algort2):
+        def hasil(p, algort2, outp):
             hpst = socket.gethostname()
             date = datetime.datetime.now()
             timestamp = date.strftime("%Y%m%d_%H%M%S")
+            tanggal = date.strftime("%D")
+            jam = date.strftime("%H")
+            menit = date.strftime("%M")
             logs = f"logs/succed_{timestamp}.txt"
             filed = """#LOG FILE
 #PASSWORD FOUND
 
 # MODE: ZIP Brute Force
-# Time: """+timestamp+"""
+# Time: """+tanggal+""" | """+jam+""":"""+menit+"""
 # Desk: Year/M/D_clock/M/S
 # Zip File: """+f.split("/")[-1]+"""
+# Zip Encryption Type: """+str(outp)+"""
 # Directory: """+f+"""
 # Password: """+str(p).strip()+"""
 # Device Model: """+hpst+"""
@@ -101,7 +105,8 @@ def zips():
  |"""+reset+putih+"""             Password Found    """+borange+"""       |
  >======================================<
  |"""+reset+""" Zip File: """+hijau+f.split("/")[-1]+reset+borange+"""
- |"""+reset+""" Zip Directory: """+hijau+f+borange)
+ |"""+reset+""" Zip Directory: """+hijau+f+borange+"""
+ |"""+reset+""" Zip Encryption Type: """+hijau+str(outp)+reset)
 
                 if algort2.lower() == "y" or algort2.lower() == "Y":
                     print(borange+""" |"""+reset+""" Password: """+banhijau+str(p)+reset)
@@ -124,7 +129,7 @@ def zips():
             print(kelabu+" ["+banorange+"#"+reset+kelabu+"] Masuk ke brute force mode algoritma"+reset)
             print(putih+" ["+banorange+times+reset+putih+"] Lanjutkan dulu aktifitas anda karena ini mungkin akan sangat lama"+reset)
             if  algort2.lower() == "y" or algort2.lower() == "Y":
-                with zipfile.ZipFile(f) as z:
+                with pyzipper.ZipFile(f) as z:
                     for lenght in range(1, + int(algoritma.total) + 1):
                         while True:
                             for passwodd in itertools.product(algoritma.abjad, repeat=int(algoritma.total)):
@@ -132,33 +137,52 @@ def zips():
                                     p = ''.join(passwodd)
                                     print(kelabu+"\r ["+banhijau+"#"+reset+kelabu+"]"+orange+" Wordlist yang dibuat: "+reset+banhijau+str(p)+reset, end='', flush=True)
                                     z.extractall('hasil', pwd=p.encode("utf-8"))
-                                    hasil(p, algort2)
+                                    hasil(p, algort2, outp)
                                 except (EOFError, KeyboardInterrupt): print(kelabu+'\n ['+banmerah+'!'+reset+kelabu+'] '+merah+' Dibatalkan!'+reset);sys.exit()
-                                except (RuntimeError, zipfile.BadZipFile, zipfile.LargeZipFile, zlib.error): continue
+                                except (RuntimeError, zipfile.BadZipFile, zipfile.LargeZipFile, zlib.error, pyzipper.zipfile.BadZipFile): continue
             if algort2.lower() == "n" or algort2.lower() == "N":
-                with zipfile.ZipFile(f) as z:
+                with pyzipfile.ZipFile(f) as z:
                     for lenght in range(1, int(algoritma.total) + 1):
                         while True:
                             try:
                                 p = ''.join    (random.choices(algoritma.abjad, k=int(algoritma.total)))
                                 print(kelabu+"\r ["+banhijau+"#"+reset+kelabu+"]"+orange+" Wordlist yang dibuat: "+reset+banhijau+str(p)+reset, end='', flush=True)
                                 z.extractall('hasil', pwd=p.encode("utf-8"))
-                                hasil(p, algort2)
+                                hasil(p, algort2, outp)
                             except (EOFError, KeyboardInterrupt): print(kelabu+'\n ['+banmerah+'!'+reset+kelabu+'] '+merah+' Dibatalkan!'+reset);sys.exit()
-                            except (RuntimeError, zipfile.BadZipFile, zipfile.LargeZipFile, zlib.error): continue
+                            except (RuntimeError, zipfile.BadZipFile, zipfile.LargeZipFile, zlib.error, pyzipper.zipfile.BadZipFile): continue
     
     #EXECNORMAL
         def jip():
             j = len(list(open(tebak, 'rb')))
             print(kelabu+' ['+banhijau+'*'+reset+kelabu+'] Jumlah kata yang akan dicek:'+hijau, j)
             algort2 = "n"
-            with zipfile.ZipFile(f) as z, open(tebak, 'rb') as p:
+            with pyzipper.ZipFile(f) as z, open(tebak, 'rb') as p:
                 for p in tqdm(p, total=j, unit='word'):
                     try:
                         z.extractall('hasil', pwd=p.strip())
-                        hasil(p, algort2)
+                        hasil(p, algort2, outp)
                     except (EOFError, KeyboardInterrupt): print(kelabu+' ['+banmerah+'!'+reset+kelabu+'] '+merah+' Dibatalkan!'+reset);sys.exit()
-                    except (RuntimeError, zipfile.BadZipFile, zipfile.LargeZipFile, zlib.error): continue
+                    except (RuntimeError, zipfile.BadZipFile, zipfile.LargeZipFile, zlib.error, pyzipper.zipfile.BadZipFile): continue
+
+    #EXEC ZIP AES NORMAL
+        def zip_AES():
+            #input disni
+            j = len(list(open(tebak, 'rb')))
+            print(kelabu+' ['+banhijau+'*'+reset+kelabu+'] Jumlah kata yang akan dicek:'+hijau, j)
+            algort2 = "n"
+            with pyzipper.AESZipFile(f) as z, open(tebak, 'rb') as p:
+                for p in tqdm(p, total=j, unit='word'):
+                    try:
+                        z.extractall('hasil', pwd=p.strip())
+                        hasil(p, algort2, outp)
+                    except (EOFError, KeyboardInterrupt): print(kelabu+' ['+banmerah+'!'+reset+kelabu+'] '+merah+' Dibatalkan!'+reset);sys.exit()
+                    except (RuntimeError, zipfile.BadZipFile, zipfile.LargeZipFile, zlib.error, pyzipper.zipfile.BadZipFile): continue
+
+    #EXEC ZIP AES ALGORITMA
+        def zip_AES_algoritma(algort2):
+            c = 'c'
+            #input disini
 
     #ZIP
         print(banner)
@@ -184,16 +208,32 @@ def zips():
       
 # HASH
         try:
-            param = zipfile.ZipFile(f)
-        except (FileNotFoundError, zipfile.BadZipFile): print(borange+' ['+reset+banmerah+'!'+reset+borange+'] '+merah+'Terdeteksi bukan file zip atau anda salah memasukkan path. Koreksi penulisan path'+reset);sys.exit()
+            with pyzipper.AESZipFile(f, 'r') as zf:
+                for info in zf.infolist():
+                    if info.flag_bits & 0x1:
+                        if info.extract_version >= 51:
+                            outp = "AES"
+                        else:
+                            outp = "ZipCrypto"
+        except pyzipper.zipfile.BadZipFile: print(" [!] Zip FIle rusak")
+        except FileNotFoundError: print(borange+' ['+reset+banmerah+'!'+reset+borange+'] '+merah+'Terdeteksi bukan file zip atau anda salah memasukkan path. Koreksi penulisan path'+reset);sys.exit()
         
-        if algort.lower() == "y" or algort.lower() == "Y":
-            jipa(algort2)
-        if algort.lower() == "n":
-            jip()
-        else:
-            jip()
-        print('Wordlist Habis')
+        try:
+            if outp is 'AES':
+                if algort.lower() == "y" or algort.lower() == "Y":
+                    zip_AES_algoritma(algort2)
+                else:
+                    zip_AES()
+                print('Wordlist Habis')
+            if outp is 'ZipCrypto':
+                if algort.lower() == "y" or algort.lower() == "Y":
+                    jipa(algort2)
+                else:
+                    jip()
+                print('Wordlist Habis')
+        
+        except ImportError: print(putih+" ["+banmerah+"!"+reset+putih+"] "+merah+"Modul hiang! Install ulang script ini dari repositori gw"+reset);sys.exit()
+
     except (KeyboardInterrupt, EOFError): print(merah+'\n [!] CTRL+C Terdeteksi, keluar dari program....'+reset);sys.exit()
                 
 def rars():
