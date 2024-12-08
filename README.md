@@ -50,4 +50,4 @@ YouTube:
 
 Dokumentasi:
 
-    https://youtu.be/OVsZDJjxg70?si=1vl3732U4Wm7kT3M
+    https://www.youtube.com/watch?v=YDXy-7-mO5g&feature=youtu.be
