@@ -43,9 +43,10 @@ banner = borange+"""
 <+========================================================+>
  |"""+reset+hijau+""" Creator:   """+putih+""" Sreetx  """+borange+"""                                   |
  |"""+reset+hijau+""" Language:  """+putih+""" Python3  """+borange+"""                                  |
- |"""+reset+hijau+""" Version:   """+putih+""" 1.2.7  """+borange+"""                                    |
+ |"""+reset+hijau+""" Version:   """+putih+""" 1.4.12  """+borange+"""                                   |
  |"""+reset+hijau+""" Github:   """+putih+"""  https://github.com/Sreetx   """+borange+"""               |
  |"""+reset+hijau+""" YouTube: """+putih+"""   https://www.youtube.com/@linggachannel4781 """+borange+"""|
  >========================================================<"""+reset+bputih+"""
 
- [*] File wordlist bawaan ada di folder "word/wordlist.txt di script ini!"""+reset
+ [*] File wordlist bawaan ada di folder "word" di folder script ini!
+ [*] Gunakan Algorithm untuk membuat file wordlist lu sendiri. Cek di Github gw!"""+reset
