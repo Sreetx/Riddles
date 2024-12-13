@@ -2,6 +2,14 @@
 
 CHANGE LOG:
 
+    #1.5.13
+
+    (13/12/2024): Penambahan opsi brute force file 7z
+
+    #1.4.13 
+
+    (13/12/2024): Perbaikan bug pada mode brute force RAR file
+
     #1.4.12
 
     (8/12/2024): Sekarang mendukung mode Decomrpesi type AES
