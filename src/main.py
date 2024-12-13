@@ -48,7 +48,10 @@ try:
         import datetime
         import socket
         import pyzipper
-
+        import lzma
+        import zlib
+        import bz2
+        import datetime
     except ImportError:
         print(putih+' ['+banmerah+'!'+reset+putih+']'+borangekelip+' Module tidak lengkap'+reset)
         print(putih+' ['+banmerah+'!'+reset+putih+']'+reset+orange+' Module akan segera diinstall'+reset);time.sleep(1)
@@ -139,7 +142,7 @@ def zips():
                                     z.extractall('hasil', pwd=p.encode("utf-8"))
                                     hasil(p, algort2, outp)
                                 except (EOFError, KeyboardInterrupt): print(kelabu+'\n ['+banmerah+'!'+reset+kelabu+'] '+merah+' Dibatalkan!'+reset);sys.exit()
-                                except (RuntimeError, zipfile.BadZipFile, zipfile.LargeZipFile, zlib.error, pyzipper.zipfile.BadZipFile): continue
+                                except (RuntimeError, zipfile.BadZipFile, zipfile.LargeZipFile, zlib.error, pyzipper.zipfile.BadZipFile, lzma._decode_filter_properties): continue
             if algort2.lower() == "n" or algort2.lower() == "N":
                 with pyzipfile.ZipFile(f) as z:
                     for lenght in range(1, int(algoritma.total) + 1):
@@ -177,7 +180,7 @@ def zips():
                         z.extractall('hasil', pwd=p.strip())
                         hasil(p, algort2, outp)
                     except (EOFError, KeyboardInterrupt): print(kelabu+' ['+banmerah+'!'+reset+kelabu+'] '+merah+' Dibatalkan!'+reset);sys.exit()
-                    except (RuntimeError, zipfile.BadZipFile, zipfile.LargeZipFile, zlib.error, pyzipper.zipfile.BadZipFile): continue
+                    except (RuntimeError, zipfile.BadZipFile, zipfile.LargeZipFile, zlib.error, pyzipper.zipfile.BadZipFile, lzma.LZMAError): continue
 
     #EXEC ZIP AES ALGORITMA
         def zip_AES_algoritma(algort2):
@@ -187,20 +190,20 @@ def zips():
     #ZIP
         print(banner)
         print(kelabu+"\n ["+banorange+"ZIP"+reset+kelabu+"] Anda masuk dalam mode ekstraksi ZIP"+reset)
-        f = input(kelabu+' ['+banhijau+'?'+reset+kelabu+'] Masukkan lokasi file zip anda: '+reset)
-        algort = input(putih+" ["+banorange+"?"+reset+putih+"] Gunakan algoritma? [y/n]: "+reset)
+        f = input(kelabu+' ['+hijau+'>'+reset+kelabu+'] Masukkan lokasi file zip anda: '+reset)
+        algort = input(putih+" ["+banorange+">"+reset+putih+"] Gunakan algoritma? [y/n]: "+reset)
         if algort.lower() == "y" or algort.lower() == "Y":
-            algort2 = input(putih+" ["+banorange+"?"+reset+putih+"] Gunakan algoritma tersusun? [y/n]: "+reset)
+            algort2 = input(putih+" ["+banorange+">"+reset+putih+"] Gunakan algoritma tersusun? [y/n]: "+reset)
             try:
              from Extras import algoritma
             except ImportError as e:
                 print(putih+" ["+banmerah+"!"+reset+putih+"] "+merah+"Modul hiang! Install ulang script ini dari repositori gw"+reset);sys.exit()
         elif algort.lower() == "n":
-            tebak = input(kelabu+' ['+banhijau+'?'+reset+kelabu+'] Masukkan lokasi file wordlist anda: '+reset)
+            tebak = input(kelabu+' ['+hijau+'>'+reset+kelabu+'] Masukkan lokasi file wordlist anda: '+reset)
             if tebak is c:
                 print(borange+' ['+reset+banmerah+'!'+reset+borange+'] '+merah+' Perhatikan penulisan path wordlist'+reset);sys.exit()
         else:
-            tebak = input(kelabu+' ['+banhijau+'?'+reset+kelabu+'] Masukkan lokasi file wordlist anda: '+reset)
+            tebak = input(kelabu+' ['+banhijau+'>'+reset+kelabu+'] Masukkan lokasi file wordlist anda: '+reset)
             if tebak is c:
                 print(borange+' ['+reset+banmerah+'!'+reset+borange+'] '+merah+' Perhatikan penulisan path wordlist'+reset);sys.exit()
         print(putih+' \n['+banorange+'INFO'+reset+putih+'] '+orange+'Jika proses penebakan berhenti, itu artinya script menemukan kata yang tepat dan script mencoba untuk mengekstrak file tersebut'+reset)
@@ -219,13 +222,13 @@ def zips():
         except FileNotFoundError: print(borange+' ['+reset+banmerah+'!'+reset+borange+'] '+merah+'Terdeteksi bukan file zip atau anda salah memasukkan path. Koreksi penulisan path'+reset);sys.exit()
         
         try:
-            if outp is 'AES':
+            if outp is str('AES'):
                 if algort.lower() == "y" or algort.lower() == "Y":
                     zip_AES_algoritma(algort2)
                 else:
                     zip_AES()
                 print('Wordlist Habis')
-            if outp is 'ZipCrypto':
+            if outp is str('ZipCrypto'):
                 if algort.lower() == "y" or algort.lower() == "Y":
                     jipa(algort2)
                 else:
@@ -300,7 +303,7 @@ def rars():
                                     print(kelabu+" ["+banmerah+"!"+reset+kelabu+"] "+reset+merah+"Utilitas yang dibutuhkan rarfile tidal tersedia. Install sendiri! (unrar)"+reset)
                                     enter = input(kelabu+" ["+banorange+"DONWLOAD"+reset+kelabu+"]"+putih+" Enter untuk masuk ke halaman unduhan"+reset);sys.exit()
             if algort2.lower() == "n" or algort2.lower() == "N":
-                with zipfile.ZipFile(f) as z:
+                with rarfile.RarFile(r) as z:
                     for lenght in range(1, int(algoritma.total) + 1):
                         while True:
                             try:
@@ -329,7 +332,7 @@ def rars():
                     except (RuntimeError, rarfile.BadRarFile, rarfile.PasswordRequired): continue
                     except rarfile.RarCannotExec: 
                         print(kelabu+" ["+banmerah+"!"+reset+kelabu+"] "+reset+merah+"Utilitas yang dibutuhkan rarfile tidal tersedia. Install sendiri! (unrar)"+reset)
-                        enter = input(kelabu+" ["+banorange+"DONWLOAD"+reset+kelabu+"]"+puith+" Enter untuk masuk ke halaman unduhan"+reset)
+                        enter = input(kelabu+" ["+banorange+"DONWLOAD"+reset+kelabu+"]"+putih+" Enter untuk masuk ke halaman unduhan"+reset)
                         if enter.lower() == "":
                             import webbrowser
                             webbrower.open("https://www.rarlab.com/rar_add.htm")
@@ -339,12 +342,12 @@ def rars():
         os.system("cls||clear")
         print(banner)
         print(kelabu+"\n ["+banorange+"RAR"+reset+kelabu+"] Anda masuk dalam mode ekstraksi RAR"+reset)
-        r = input(kelabu+' ['+banhijau+'?'+reset+kelabu+'] Masukkan lokasi file RAR anda: '+reset)
-        algort = input(putih+" ["+banorange+"?"+reset+putih+"] Gunakan algoritma? [y/n]: "+reset)
+        r = input(kelabu+' ['+hijau+'>'+reset+kelabu+'] Masukkan lokasi file RAR anda: '+reset)
+        algort = input(putih+" ["+banorange+">"+reset+putih+"] Gunakan algoritma? [y/n]: "+reset)
         if algort.lower() == "y" or algort.lower() == "Y":
-            algort2 = input(putih+" ["+banorange+"?"+reset+putih+"] Gunakan algoritma tersusun? [y/n]: "+reset)
+            algort2 = input(putih+" ["+banorange+">"+reset+putih+"] Gunakan algoritma tersusun? [y/n]: "+reset)
         else:
-            word = input(kelabu+' ['+banhijau+'?'+reset+kelabu+'] Masukkan lokasi file wordlist: '+reset)
+            word = input(kelabu+' ['+hijau+'>'+reset+kelabu+'] Masukkan lokasi file wordlist: '+reset)
             try:
                 ttl = len(list(open(word, "rb")))
             except FileNotFoundError:
@@ -452,7 +455,6 @@ if upgort:
         print(putih+"\n ["+banhijau+"UPDATE"+reset+putih+"] Update Succed!"+reset);sys.exit()
     except (socket.timeout, socket.gaierror): print(putih+" ["+banmerah+"!"+reset+putih+"] Cek koneksi internet"+reset);sys.exit()
     print(kelabu+" ["+banorange+"UPDATE"+reset+kelabu+"]"+putih+" Succed..."+reset);sys.exit()
-    
 if hh:
     os.system("cls||clear")
     helpp()
@@ -465,25 +467,16 @@ if rarr:
 if sz:
     os.system("cls||clear")
     print(banner)
+    print(kelabu+"\n ["+banorange+"7-ZIP"+reset+kelabu+"] Anda masuk dalam mode ekstraksi 7-Zip"+reset)
+    path = input(kelabu+" ["+hijau+">"+reset+kelabu+"]"+putih+" Masukkan path file 7z: ")
+    word = input(kelabu+" ["+hijau+">"+reset+kelabu+"]"+putih+" Masukkan path file wordlist: ")
+    with open('Extras/data.py', 'w') as data:
+        data.write("""path = '"""+path+"""'
+word = '"""+word+"""'""")
     try:
-        from Extras import sevenzippy
-        sevenzippy.Sxc()
+        from Extras import z_riddles
     except ImportError:
-        szz = input(putih+" ["+banmerah+"!"+reset+putih+"]"+orange+" Install Riddles - 7Zip Cracker? "+kelabu+"["+banhijau+"y/n"+reset+kelabu+"]: "+reset)
-        if szz.lower() == "y" or szz.lower() == "Y":
-            try:
-                import requests
-                req = requests.get("https://raw.githubusercontent.com/Sreetx/Riddles/master/src/Extras/sevenzippy.py")
-                req_str = req.content.decode("utf-8")
-                with open("~/Riddles/src/Extras/sevenzippy.py", "w", encode="utf-8") as file:
-                        file.write(req_str)
-                print(borange+" [*] Terinsall! Mulai ulang script sekarang!");sys.exit()
-            except ImportError:
-                print(merah+" [+] Python3-requests akan diinstall terlebih dahulu untuk mengunduh script ini"+reset)
-                os.system("pip install requests")
-                enter = input(kelabu+" ["+banhijau+"?"+reset+kelabu+"] "+orange+"Jika requests terinstall dengan baik, tekan CTRL+C untuk keluar. Jika memikiki masalah dengan pip, tekan enter(for Debian and derivative users")
-                os.system("apt install python3-requests")
-        else:
-            pass
+        print(kelabu+" ["+orange+"#"+kelabu+"]"+putih+" Module untuk 7z Archive Cracker tidak ditemukan!")
+        print(kelabu+" ["+orange+"#"+kelabu+"]"+putih+" Coba ketikan < python3 main.py --update > *tanpa tanda < >");sys.exit()
 if update:
     updates()
