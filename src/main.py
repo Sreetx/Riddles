@@ -434,7 +434,7 @@ if upgort:
         print(kelabu+" ["+banorange+"UPDATE"+reset+kelabu+"]"+putih+" Checking Update..."+reset);time.sleep(0.2)
         req1 = requests.get("https://raw.githubusercontent.com/Sreetx/Riddles/master/src/Extras/algoritma.py")
         req2 = requests.get("https://raw.githubusercontent.com/Sreetx/Riddles/master/src/Extras/banner.py")
-        req3 = requests.get("https://raw.githubusercontent.com/Sreetx/Riddles/master/src/Extras/sevenzippy.py")
+        req3 = requests.get("https://raw.githubusercontent.com/Sreetx/Riddles/refs/heads/master/src/Extras/z_riddles.py")
         req4 = requests.get("https://raw.githubusercontent.com/Sreetx/Riddles/master/src/Extras/color/warna.py")
         req1_str = req1.content.decode("utf-8")
         req2_str = req2.content.decode("utf-8")
