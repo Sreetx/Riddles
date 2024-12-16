@@ -36,14 +36,13 @@ try:
     from Extras.color.warna import reset
 except ImportError:
     print(' [!] Harap install ulang script ini dari repository github kami!');sys.exit()
-
 banner = borange+"""
 >==========================================================<
  | """+reset+putih+"""           Riddles - Archive File Cracker!!      """+borange+"""      |
 <+========================================================+>
  |"""+reset+hijau+""" Creator:   """+putih+""" Sreetx  """+borange+"""                                   |
  |"""+reset+hijau+""" Language:  """+putih+""" Python3  """+borange+"""                                  |
- |"""+reset+hijau+""" Version:   """+putih+""" 1.4.12  """+borange+"""                                   |
+ |"""+reset+hijau+""" Version:   """+putih+""" 1.5.13  """+borange+"""                                   |
  |"""+reset+hijau+""" Github:   """+putih+"""  https://github.com/Sreetx   """+borange+"""               |
  |"""+reset+hijau+""" YouTube: """+putih+"""   https://www.youtube.com/@linggachannel4781 """+borange+"""|
  >========================================================<"""+reset+bputih+"""
