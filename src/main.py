@@ -440,6 +440,7 @@ if upgort:
         req2_str = req2.content.decode("utf-8")
         req3_str = req3.content.decode("utf-8")
         req4_str = req4.content.decode("utf-8")
+        os.makedirs('Extras', exist_ok=True)
         print(kelabu+"\n ["+banorange+"UPDATE"+reset+kelabu+"]"+putih+" Installing Algoritma..."+reset);time.sleep(0.2)
         with open("Extras/algoritma.py", "w", encoding="utf-8") as a:
             a.write(req1_str)
