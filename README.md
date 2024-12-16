@@ -2,6 +2,10 @@
 
 CHANGE LOG:
 
+    #1.5.14
+
+    (16/12/2024): Pembaruan dan pestabilan fitur update
+
     #1.5.13
 
     (13/12/2024): Penambahan opsi brute force file 7z
