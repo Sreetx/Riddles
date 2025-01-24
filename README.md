@@ -2,6 +2,10 @@
 
 CHANGE LOG:
 
+    #1.5.16
+
+    (24/01/2025): Perbaikan Bug pada setiap input yang dimasukkan
+
     #1.5.14
 
     (16/12/2024): Pembaruan dan pestabilan fitur update
