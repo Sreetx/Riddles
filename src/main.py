@@ -75,7 +75,7 @@ try:
         else: pass
 except KeyboardInterrupt: print(bputih+' ['+banmerah+'!'+reset+bputih+']'+reset+merah+' Canceled by USER!'+reset);sys.exit()
 waktu = datetime.datetime.now()
-times = waktu.strftime("%H%:%M%:%S")
+times = waktu.strftime("%H:%M:%S")
 c = ""
 def zips():
     try:
@@ -128,7 +128,7 @@ def zips():
             sys.exit()
             os.system("cls||clear")
     #EXECALGORITMA
-        def jipa(algort2):
+        def jipa(algort2, outp):
             print(kelabu+" ["+banorange+"#"+reset+kelabu+"] Masuk ke brute force mode algoritma"+reset)
             print(putih+" ["+banorange+times+reset+putih+"] Lanjutkan dulu aktifitas anda karena ini mungkin akan sangat lama"+reset)
             if  algort2.lower() == "y" or algort2.lower() == "Y":
@@ -138,30 +138,30 @@ def zips():
                             for passwodd in itertools.product(algoritma.abjad, repeat=int(algoritma.total)):
                                 try:
                                     p = ''.join(passwodd)
-                                    print(kelabu+"\r ["+banhijau+"#"+reset+kelabu+"]"+orange+" Wordlist yang dibuat: "+reset+banhijau+str(p)+reset, end='', flush=True)
+                                    print(kelabu+"\r ["+banhijau+outp+reset+kelabu+"]"+orange+" Wordlist yang dibuat: "+reset+banhijau+str(p)+reset, end='', flush=True)
                                     z.extractall('hasil', pwd=p.encode("utf-8"))
                                     hasil(p, algort2, outp)
                                 except (EOFError, KeyboardInterrupt): print(kelabu+'\n ['+banmerah+'!'+reset+kelabu+'] '+merah+' Dibatalkan!'+reset);sys.exit()
-                                except (RuntimeError, zipfile.BadZipFile, zipfile.LargeZipFile, zlib.error, pyzipper.zipfile.BadZipFile, lzma._decode_filter_properties): continue
+                                except (RuntimeError, zipfile.BadZipFile, zipfile.LargeZipFile, zlib.error, pyzipper.zipfile.BadZipFile): continue
             if algort2.lower() == "n" or algort2.lower() == "N":
-                with pyzipfile.ZipFile(f) as z:
+                with pyzipper.ZipFile(f) as z:
                     for lenght in range(1, int(algoritma.total) + 1):
                         while True:
                             try:
                                 p = ''.join    (random.choices(algoritma.abjad, k=int(algoritma.total)))
-                                print(kelabu+"\r ["+banhijau+"#"+reset+kelabu+"]"+orange+" Wordlist yang dibuat: "+reset+banhijau+str(p)+reset, end='', flush=True)
+                                print(kelabu+"\r ["+banhijau+outp+reset+kelabu+"]"+orange+" Wordlist yang dibuat: "+reset+banhijau+str(p)+reset, end='', flush=True)
                                 z.extractall('hasil', pwd=p.encode("utf-8"))
                                 hasil(p, algort2, outp)
                             except (EOFError, KeyboardInterrupt): print(kelabu+'\n ['+banmerah+'!'+reset+kelabu+'] '+merah+' Dibatalkan!'+reset);sys.exit()
                             except (RuntimeError, zipfile.BadZipFile, zipfile.LargeZipFile, zlib.error, pyzipper.zipfile.BadZipFile): continue
     
     #EXECNORMAL
-        def jip():
+        def jip(outp):
             j = len(list(open(tebak, 'rb')))
             print(kelabu+' ['+banhijau+'*'+reset+kelabu+'] Jumlah kata yang akan dicek:'+hijau, j)
             algort2 = "n"
             with pyzipper.ZipFile(f) as z, open(tebak, 'rb') as p:
-                for p in tqdm(p, total=j, unit='word'):
+                for p in tqdm(p, total=j, unit='word', desc=outp):
                     try:
                         z.extractall('hasil', pwd=p.strip())
                         hasil(p, algort2, outp)
@@ -169,13 +169,13 @@ def zips():
                     except (RuntimeError, zipfile.BadZipFile, zipfile.LargeZipFile, zlib.error, pyzipper.zipfile.BadZipFile): continue
 
     #EXEC ZIP AES NORMAL
-        def zip_AES():
+        def zip_AES(outp):
             #input disni
             j = len(list(open(tebak, 'rb')))
             print(kelabu+' ['+banhijau+'*'+reset+kelabu+'] Jumlah kata yang akan dicek:'+hijau, j)
             algort2 = "n"
             with pyzipper.AESZipFile(f) as z, open(tebak, 'rb') as p:
-                for p in tqdm(p, total=j, unit='word'):
+                for p in tqdm(p, total=j, unit='word', desc=outp):
                     try:
                         z.extractall('hasil', pwd=p.strip())
                         hasil(p, algort2, outp)
@@ -183,14 +183,15 @@ def zips():
                     except (RuntimeError, zipfile.BadZipFile, zipfile.LargeZipFile, zlib.error, pyzipper.zipfile.BadZipFile, lzma.LZMAError): continue
 
     #EXEC ZIP AES ALGORITMA
-        def zip_AES_algoritma(algort2):
-            c = 'c'
+        def zip_AES_algoritma(algort2, outp):
+            print(putih+ "["+banorange+"INFO"+reset+putih+"] Mode algroitma buat hash Zip AES blm tersedia"+reset)
             #input disini
 
     #ZIP
         print(banner)
         print(kelabu+"\n ["+banorange+"ZIP"+reset+kelabu+"] Anda masuk dalam mode ekstraksi ZIP"+reset)
         f = input(kelabu+' ['+hijau+'>'+reset+kelabu+'] Masukkan lokasi file zip anda: '+reset)
+        f = f.strip()
         algort = input(putih+" ["+banorange+">"+reset+putih+"] Gunakan algoritma? [y/n]: "+reset)
         if algort.lower() == "y" or algort.lower() == "Y":
             algort2 = input(putih+" ["+banorange+">"+reset+putih+"] Gunakan algoritma tersusun? [y/n]: "+reset)
@@ -200,6 +201,7 @@ def zips():
                 print(putih+" ["+banmerah+"!"+reset+putih+"] "+merah+"Modul hiang! Install ulang script ini dari repositori gw"+reset);sys.exit()
         elif algort.lower() == "n":
             tebak = input(kelabu+' ['+hijau+'>'+reset+kelabu+'] Masukkan lokasi file wordlist anda: '+reset)
+            tebak = tebak.strip()
             if tebak is c:
                 print(borange+' ['+reset+banmerah+'!'+reset+borange+'] '+merah+' Perhatikan penulisan path wordlist'+reset);sys.exit()
         else:
@@ -224,15 +226,15 @@ def zips():
         try:
             if outp is str('AES'):
                 if algort.lower() == "y" or algort.lower() == "Y":
-                    zip_AES_algoritma(algort2)
+                    zip_AES_algoritma(algort2, outp)
                 else:
-                    zip_AES()
+                    zip_AES(outp)
                 print('Wordlist Habis')
             if outp is str('ZipCrypto'):
                 if algort.lower() == "y" or algort.lower() == "Y":
-                    jipa(algort2)
+                    jipa(algort2, outp)
                 else:
-                    jip()
+                    jip(outp)
                 print('Wordlist Habis')
         
         except ImportError: print(putih+" ["+banmerah+"!"+reset+putih+"] "+merah+"Modul hiang! Install ulang script ini dari repositori gw"+reset);sys.exit()
@@ -471,6 +473,8 @@ if sz:
     print(kelabu+"\n ["+banorange+"7-ZIP"+reset+kelabu+"] Anda masuk dalam mode ekstraksi 7-Zip"+reset)
     path = input(kelabu+" ["+hijau+">"+reset+kelabu+"]"+putih+" Masukkan path file 7z: ")
     word = input(kelabu+" ["+hijau+">"+reset+kelabu+"]"+putih+" Masukkan path file wordlist: ")
+    path = path.strip()
+    word = word.strip()
     with open('Extras/data.py', 'w') as data:
         data.write("""path = '"""+path+"""'
 word = '"""+word+"""'""")
