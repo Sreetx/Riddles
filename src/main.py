@@ -412,7 +412,7 @@ def updates():
     except (socket.timeout, socket.gaierror): print(putih+" ["+banmerah+"!"+reset+putih+"] Cek koneksi internet kamu"+reset);sys.exit()
     print(kelabu+" ["+banorange+"UPDATE"+reset+kelabu+"]"+putih+" Succed..."+reset);sys.exit()
     
-menu = optparse.OptionParser(info())
+menu = optparse.OptionParser()
 menu.add_option('--zip', dest="zipp", action='store_true', default=False)
 menu.add_option('--rar', dest="rarr", action='store_true', default=False)
 menu.add_option('--hh', dest="hh", action='store_true', default=False)
@@ -458,16 +458,16 @@ if upgort:
         print(putih+"\n ["+banhijau+"UPDATE"+reset+putih+"] Update Succed!"+reset);sys.exit()
     except (socket.timeout, socket.gaierror): print(putih+" ["+banmerah+"!"+reset+putih+"] Cek koneksi internet"+reset);sys.exit()
     print(kelabu+" ["+banorange+"UPDATE"+reset+kelabu+"]"+putih+" Succed..."+reset);sys.exit()
-if hh:
+elif hh:
     os.system("cls||clear")
     helpp()
-if zipp:
+elif zipp:
     os.system("cls||clear")
     zips()
-if rarr:
+elif rarr:
     os.system("cls||clear")
     rars()
-if sz:
+elif sz:
     os.system("cls||clear")
     print(banner)
     print(kelabu+"\n ["+banorange+"7-ZIP"+reset+kelabu+"] Anda masuk dalam mode ekstraksi 7-Zip"+reset)
@@ -483,5 +483,7 @@ word = '"""+word+"""'""")
     except ImportError:
         print(kelabu+" ["+orange+"#"+kelabu+"]"+putih+" Module untuk 7z Archive Cracker tidak ditemukan!")
         print(kelabu+" ["+orange+"#"+kelabu+"]"+putih+" Coba ketikan < python3 main.py --update > *tanpa tanda < >");sys.exit()
-if update:
+elif update:
     updates()
+else:
+    helpp()
