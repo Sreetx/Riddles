@@ -5,6 +5,10 @@ Via Brute Force
 
 CHANGE LOG:
 
+    #1.5.17
+
+    (15/02/2025): Menghilangkan opsi help manual ketika mengetikkan python3 main.py
+    
     #1.5.16
 
     (24/01/2025): Perbaikan Bug pada setiap input yang dimasukkan
